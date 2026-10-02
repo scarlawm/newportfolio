@@ -1,9 +1,16 @@
 /* KASHI ATMOSPHERE EXPERIMENT
-   Additive only. Delete this file and its link in index.html to restore the previous visual exactly. */
+   Additive only. Remove this file and its link in index.html to restore the previous visual. */
 :root{--ka-red:#ef493f;--ka-blue:#67cde9;--ka-yellow:#f3d34a}
 body{position:relative}
 body:before{content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;background:radial-gradient(circle at 15% 78%,rgba(239,73,63,.09),transparent 24%),radial-gradient(circle at 84% 16%,rgba(103,205,233,.10),transparent 27%),linear-gradient(180deg,#0e0e0f,#111011 55%,#0b0b0c)}
 body:after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.13;background-image:radial-gradient(rgba(255,255,255,.3) .6px,transparent .6px);background-size:5px 5px;mix-blend-mode:screen}
+/* Visible Kashi atmosphere, while preserving the existing layout */
+.home{background:radial-gradient(circle at 72% 88%,rgba(103,205,233,.18),transparent 24%),radial-gradient(circle at 13% 16%,rgba(239,73,63,.10),transparent 22%),#f5efe4}
+.home-art{background:radial-gradient(ellipse at 50% 112%,rgba(34,70,73,.22) 0 14%,transparent 15%),linear-gradient(170deg,transparent 0 68%,rgba(103,205,233,.14) 69% 73%,transparent 74%),#eee4d2;background-size:auto,100% 100%,auto;animation:kaSurface 18s ease-in-out infinite alternate}
+@keyframes kaSurface{from{background-position:50% 112%,0 0,0 0}to{background-position:53% 108%,12px 0,0 0}}
+.about{background:radial-gradient(circle at 8% 85%,rgba(239,73,63,.10),transparent 20%),radial-gradient(circle at 92% 20%,rgba(103,205,233,.14),transparent 24%),#e8dfcf}
+.work-section{background:radial-gradient(circle at 18% 72%,rgba(103,205,233,.12),transparent 25%),radial-gradient(circle at 82% 18%,rgba(239,73,63,.10),transparent 22%),#151515}
+.contact{background:radial-gradient(circle at 82% 18%,rgba(103,205,233,.35),transparent 26%),radial-gradient(circle at 15% 85%,rgba(239,73,63,.18),transparent 25%),#f3d34a}
 .home,.about,.work-section,.contact{isolation:isolate}
 .home:before,.about:before,.work-section:before,.contact:before{content:"";position:absolute;inset:-25%;z-index:-1;pointer-events:none;opacity:.25;filter:blur(1px);background:linear-gradient(112deg,transparent 28%,rgba(103,205,233,.12) 45%,transparent 59%);transform:translateX(-18%);animation:kaRiver 14s ease-in-out infinite alternate}
 @keyframes kaRiver{from{transform:translateX(-18%) rotate(-1.5deg)}to{transform:translateX(18%) rotate(1.5deg)}}
@@ -14,5 +21,5 @@ body:after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;opac
 .dock-btn:hover,.work-tab:hover{transform:translateY(-2px)}
 .enter-btn:hover,.doors-inner button:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 #0e0e0f}
 .contact-actions a:hover{transform:translateY(-3px);box-shadow:5px 5px 0 #0e0e0f}
-@media(max-width:768px){body:after{opacity:.08}.home:before,.about:before,.work-section:before,.contact:before{opacity:.18;animation-duration:18s}.about:after,.work-section:after{font-size:7px;letter-spacing:.16em}.home-art:before{opacity:.55}}
+@media(max-width:768px){body:after{opacity:.08}.home:before,.about:before,.work-section:before,.contact:before{opacity:.18;animation-duration:18s}.about:after,.work-section:after{font-size:7px;letter-spacing:.16em}.home-art:before{opacity:.55}.home-art{animation-duration:24s}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}}
