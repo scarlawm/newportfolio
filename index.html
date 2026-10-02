@@ -1,180 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Himanshu Singh • @shutterbug.hai</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-html,body{height:100%;margin:0;overflow:hidden;background:#090a0d;color:#f4f4f5;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overscroll-behavior:none}
-.mono{font-family:ui-monospace,Menlo,Consolas,monospace}.serif{font-family:Georgia,"Times New Roman",serif}
-#track{height:100%;transition:transform .9s cubic-bezier(.16,1,.3,1)}
-.hpanel{width:25%;flex:none}
-.slide{height:100%;display:flex;align-items:center;justify-content:center;padding:4.5rem 1rem 5.5rem;overflow:hidden}
-#doors{transform:scaleY(0);transform-origin:top;transition:transform .4s ease}
-#doors.shut{transform:scaleY(1)}
-.dock-btn.active{background:#ffcc00;color:#000;font-weight:900}
-::selection{background:#ffcc00;color:#000}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101010">
+  <meta name="description" content="Himanshu Singh aka shutterbug.hai — photographer from Varanasi with 6+ years of experience.">
+  <title>Himanshu Singh — shutterbug.hai</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-<div class="fixed inset-0 w-full h-full overflow-hidden">
+  <div id="app">
 
-<!-- HUD -->
-<div class="pointer-events-none fixed inset-0 z-40 flex flex-col justify-between p-4 sm:p-6 opacity-35 select-none mono text-[11px] tracking-widest text-zinc-400" style="padding-top:calc(1rem + env(safe-area-inset-top,0px))">
-  <div class="flex justify-between items-center"><div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span><span class="text-red-400 font-bold uppercase">REC [35MM RAW]</span></div><div class="flex gap-4"><span class="hidden sm:inline">VARANASI / 25.3176° N</span><span>SHUTTERBUG.HAI</span></div></div>
-  <div class="relative w-full h-[65vh] border border-white/5 rounded-3xl"><i class="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-white/40"></i><i class="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-white/40"></i><i class="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-white/40"></i><i class="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-white/40"></i></div>
-  <div class="flex justify-between"><div class="flex gap-4"><span>ISO 400</span><span class="text-amber-400 font-bold" id="hudShutter">1/15s</span><span>f/1.4 PRIME</span></div><span class="text-zinc-500" id="secNo">SECTION 1 / 6</span></div>
-</div>
+    <!-- CAMERA HUD -->
+    <div class="camera-hud pointer-events-none fixed inset-0 z-40 select-none mono" aria-hidden="true">
+      <div class="hud-top">
+        <div class="hud-record"><span class="rec-dot"></span><span>REC</span></div>
+        <div class="hud-brand">SHUTTERBUG.HAI</div>
+      </div>
 
-<header class="fixed top-0 left-0 right-0 z-40 max-w-6xl mx-auto px-6 flex justify-between items-center" style="padding-top:calc(1.25rem + env(safe-area-inset-top,0px))">
-  <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-xl bg-[#ffcc00] text-black font-black flex items-center justify-center text-xs">SB</div><div><span class="font-black text-sm uppercase block leading-tight">Himanshu Singh</span><span class="text-[11px] mono tracking-widest text-amber-400 uppercase">@shutterbug.hai</span></div></div>
-  <div class="flex items-center gap-3">
-    <div class="hidden sm:block px-3 py-1 bg-zinc-900/90 border border-zinc-800 text-[11px] mono rounded-full text-zinc-300">📍 Varanasi, India</div>
-    <button id="shutterBtn" class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-[11px] mono hover:border-zinc-700">Drag: <span id="shutterTxt">1/15s</span></button>
-  </div>
-</header>
+      <div class="hud-corners">
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
+      </div>
 
-<div id="track">
-
-<!-- 0 HOME -->
-<section class="slide"><div class="max-w-5xl w-full">
-  <div class="bg-[#002eff] rounded-[2.5rem] p-8 sm:p-14 relative overflow-hidden border border-blue-400/30 shadow-[0_20px_50px_rgba(0,42,255,0.35)]">
-    <svg class="absolute -right-8 -bottom-10 opacity-15 rotate-12 pointer-events-none" width="440" height="440" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
-    <div class="inline-block px-3.5 py-1.5 rounded-full bg-black/30 text-xs mono uppercase tracking-widest mb-6 border border-white/10">🔥 Varanasi Born • Street &amp; Visual Direction</div>
-    <h1 class="text-4xl sm:text-7xl lg:text-8xl font-black tracking-tight uppercase leading-[0.9] max-w-4xl">Shutter. Grain. <br><span class="text-[#ffcc00] underline decoration-wavy decoration-white/40">Emotion.</span></h1>
-    <p class="mt-6 text-base sm:text-2xl text-blue-100 max-w-2xl font-light leading-relaxed">I'm <strong class="font-bold text-white">Himanshu Singh</strong> (<span class="text-amber-300 mono">@shutterbug.hai</span>). Capturing street grit across Varanasi, intense esports arenas, raw portraiture, and high-fashion editorial frames.</p>
-    <div class="mt-8 flex flex-wrap gap-4">
-      <button data-go="2" class="px-7 py-3.5 bg-[#ffcc00] text-black font-black rounded-2xl hover:bg-amber-300 text-xs uppercase tracking-wider">Enter Work Metro ↗</button>
-      <button data-go="1" class="px-7 py-3.5 bg-black/40 hover:bg-black/60 rounded-2xl text-xs mono uppercase tracking-wider border border-white/20">Read The Origin</button>
+      <div class="hud-bottom">
+        <span>VARANASI</span>
+        <span id="hudShutter">1/15s</span>
+        <span id="secNo">01 / 04</span>
+      </div>
     </div>
+
+    <!-- HEADER -->
+    <header class="site-header fixed top-0 left-0 right-0 z-50">
+      <div class="header-inner max-w-6xl mx-auto px-4 sm:px-6">
+        <a href="#home" class="brand-lockup" data-go="0" aria-label="Home">
+          <span class="brand-box">SB</span>
+          <span class="brand-copy">
+            <strong>Himanshu Singh</strong>
+            <small>aka shutterbug.hai</small>
+          </span>
+        </a>
+
+        <div class="header-actions">
+          <span class="location-pill">📍 Varanasi, India</span>
+          <button id="shutterBtn" type="button" class="shutter-pill" aria-label="Toggle shutter speed">
+            <span>DRAG</span>
+            <b id="shutterTxt">1/15s</b>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main id="track">
+
+      <!-- ===================================================
+           HOME
+           =================================================== -->
+      <section class="slide page-section" id="home" data-section="0" aria-labelledby="home-title">
+        <div class="home-wrap">
+          <div class="home-card">
+            <div class="grain"></div>
+            <div class="banarasi-pattern"></div>
+
+            <div class="home-badge">VARANASI • 6+ YEARS</div>
+
+            <div class="home-title-wrap">
+              <p class="eyebrow">PHOTOGRAPHER / CREATIVE VISUALS</p>
+              <h1 id="home-title">
+                Himanshu<br>
+                <span>Singh.</span>
+              </h1>
+              <div class="aka-line">aka <strong>shutterbug.hai</strong></div>
+            </div>
+
+            <div class="home-plate">
+              <div class="plate-item">
+                <span>BASED IN</span>
+                <strong>VARANASI</strong>
+              </div>
+              <div class="plate-divider"></div>
+              <div class="plate-item">
+                <span>EXPERIENCE</span>
+                <strong>6+ YEARS</strong>
+              </div>
+            </div>
+
+            <div class="home-food-stack" aria-hidden="true">
+              <span class="food-chip paan">पान</span>
+              <span class="food-chip kachori">कचौड़ी</span>
+              <span class="food-chip chai">चाय</span>
+              <span class="food-chip jalebi">जलेबी</span>
+            </div>
+
+            <button data-go="1" type="button" class="home-scroll">
+              <span>ENTER</span>
+              <span class="scroll-line"></span>
+              <span>THE STORY</span>
+            </button>
+          </div>
+
+          <div class="home-caption">
+            <span>01</span>
+            <span>“See the moment. Feel the frame.”</span>
+            <span>↓</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================
+           ABOUT
+           =================================================== -->
+      <section class="slide page-section" id="about" data-section="1" aria-labelledby="about-title">
+        <div class="about-board">
+
+          <div class="board-header">
+            <div>
+              <span class="board-label">DARKROOM NOTEBOOK / 02</span>
+              <h2 id="about-title">Six years of looking differently.</h2>
+            </div>
+            <div class="stamp">
+              <small>KASHI</small>
+              <strong>6+</strong>
+              <small>YEARS</small>
+            </div>
+          </div>
+
+          <div class="about-layout">
+
+            <article class="about-story">
+              <div class="tape"></div>
+              <span class="red-kicker">FROM VARANASI</span>
+              <h3>Photography became the way I remember life.</h3>
+              <p>
+                I'm Himanshu Singh, a photographer from Varanasi with more than six years behind the camera.
+                I follow light, movement, people and the tiny details that make an ordinary moment feel worth keeping.
+              </p>
+              <p>
+                My work is rooted in observation — finding the frame before the moment disappears,
+                keeping the atmosphere intact and letting the photograph feel lived-in rather than manufactured.
+              </p>
+            </article>
+
+            <article class="kashi-card">
+              <div class="kashi-top">
+                <span>काशी कैमरा क्लब</span>
+                <span>EST. 2020+</span>
+              </div>
+
+              <div class="kashi-plate">
+                <div class="dish-ring"></div>
+                <div class="plate-text">
+                  <small>ONE CITY</small>
+                  <strong>ENDLESS<br>FRAMES</strong>
+                  <em>Varanasi • India</em>
+                </div>
+              </div>
+
+              <div class="kashi-menu">
+                <span>पान की लाली</span>
+                <span>गंगा की रोशनी</span>
+                <span>कचौड़ी की गली</span>
+                <span>घाट की धुंध</span>
+              </div>
+            </article>
+
+            <article class="reach-card">
+              <div class="reach-top">
+                <span>PUBLIC REACH</span>
+                <span>PEXELS</span>
+              </div>
+              <strong>9M+</strong>
+              <p>views across my Pexels photography.</p>
+
+              <!-- Replace URL in main.js -->
+              <a id="pexelsLink"
+                 href="https://www.pexels.com/"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="pexels-link">
+                VIEW PROFILE ↗
+              </a>
+            </article>
+
+            <article class="quote-strip">
+              <span class="quote-open">“</span>
+              <div>
+                <strong>Motion is not the enemy of a photograph.</strong>
+                <p>It can be the reason the frame feels alive.</p>
+              </div>
+              <span class="quote-city">KASHI / 25.3176° N</span>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================
+           WORK / CONTACT SHEET
+           =================================================== -->
+      <section class="work-section page-section" id="work" data-section="2" aria-labelledby="work-title">
+        <div id="hinner">
+
+          <!-- WORK LANDING -->
+          <section class="work-panel slide" data-work-index="0">
+            <div class="work-board">
+              <div class="work-topbar">
+                <div>
+                  <span class="board-label yellow">CONTACT SHEET / 03</span>
+                  <h2 id="work-title">Chala guru, dekhal jaye.</h2>
+                  <p>Different rooms. Different light. Same obsession with the frame.</p>
+                </div>
+
+                <button id="doorBtn" type="button" class="door-button" aria-expanded="true">
+                  Close Doors ⇥
+                </button>
+              </div>
+
+              <div id="workTabs" class="work-tabs"></div>
+
+              <div class="work-stage">
+                <div id="doors" class="doors">
+                  <div class="doors-inner">
+                    <span class="doors-script">दरवाजा बंद बा</span>
+                    <strong>अबहीं बाहर बानी</strong>
+                    <p>खोलऽ, फिर आराम से देखऽ।</p>
+                    <button id="openDoorsInline" type="button">Open Doors</button>
+                  </div>
+                </div>
+
+                <div id="workCopy" class="work-copy"></div>
+                <div id="workGallery" class="work-gallery"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- EVENTS -->
+          <section class="work-panel slide" data-work-index="1">
+            <div class="category-board">
+              <div class="category-heading">
+                <span>01 • EVENTS</span>
+                <h3>Moments before<br>they disappear.</h3>
+                <p>Celebrations, people, stages, chaos, emotion — photographs that keep the atmosphere alive.</p>
+              </div>
+              <div class="category-gallery" data-gallery="events"></div>
+            </div>
+          </section>
+
+          <!-- ESPORTS -->
+          <section class="work-panel slide" data-work-index="2">
+            <div class="category-board">
+              <div class="category-heading">
+                <span>02 • ESPORTS</span>
+                <h3>Pressure.<br>Light. Reaction.</h3>
+                <p>High-energy frames built around timing, expression, atmosphere and split-second decisions.</p>
+              </div>
+              <div class="category-gallery" data-gallery="esports"></div>
+            </div>
+          </section>
+
+          <!-- STREET -->
+          <section class="work-panel slide" data-work-index="3">
+            <div class="category-board">
+              <div class="category-heading">
+                <span>03 • STREET</span>
+                <h3>Kashi has<br>no pause button.</h3>
+                <p>Lanes, faces, light, texture and those little moments that happen only once.</p>
+              </div>
+              <div class="category-gallery" data-gallery="street"></div>
+            </div>
+          </section>
+
+          <!-- EDITORIAL -->
+          <section class="work-panel slide" data-work-index="4">
+            <div class="category-board">
+              <div class="category-heading">
+                <span>04 • EDITORIAL</span>
+                <h3>Built with light.<br>Finished in frame.</h3>
+                <p>Concepts, fashion, details and compositions made to carry a mood.</p>
+              </div>
+              <div class="category-gallery" data-gallery="editorial"></div>
+            </div>
+          </section>
+
+          <!-- PORTRAIT -->
+          <section class="work-panel slide" data-work-index="5">
+            <div class="category-board">
+              <div class="category-heading">
+                <span>05 • PORTRAIT / MUSE</span>
+                <h3>People first.<br>Pose second.</h3>
+                <p>Portraits that keep personality in the room, not just symmetry in the frame.</p>
+              </div>
+              <div class="category-gallery" data-gallery="portrait"></div>
+            </div>
+          </section>
+
+          <!-- HOLI / CULTURE -->
+          <section class="work-panel slide" data-work-index="6">
+            <div class="category-board">
+              <div class="category-heading">
+                <span>06 • HOLI / CULTURE</span>
+                <h3>Colour with<br>no quiet mode.</h3>
+                <p>Festival energy, culture, movement and the beautiful chaos of celebrating together.</p>
+              </div>
+              <div class="category-gallery" data-gallery="holi"></div>
+            </div>
+          </section>
+
+        </div>
+      </section>
+
+      <!-- ===================================================
+           CONTACT
+           =================================================== -->
+      <section class="slide page-section" id="contact" data-section="3" aria-labelledby="contact-title">
+        <div class="contact-wrap">
+
+          <div class="contact-card">
+            <div class="contact-grid"></div>
+
+            <span class="board-label">BOOKING / 04</span>
+            <span class="contact-kashi">काशी से, कैमरे के साथ.</span>
+
+            <h2 id="contact-title">
+              Let's Create<br>
+              Together.
+            </h2>
+
+            <p class="contact-name">Himanshu Singh</p>
+            <p class="contact-role">shutterbug.hai</p>
+
+            <div class="contact-actions">
+              <a href="mailto:contact@shutterbug.hai">Shoot An Inquiry</a>
+              <a href="https://instagram.com/shutterbug.hai"
+                 target="_blank"
+                 rel="noopener noreferrer">Follow @shutterbug.hai</a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- BOTTOM NAV -->
+    <nav class="site-nav fixed left-1/2 -translate-x-1/2 z-50" aria-label="Portfolio sections">
+      <div id="dock" class="dock"></div>
+    </nav>
+
   </div>
-  <div data-go="1" class="mt-4 flex items-center justify-center gap-2 text-zinc-500 mono text-xs cursor-pointer hover:text-zinc-300">Scroll down or swipe up to enter Origin <span class="animate-bounce">⌄</span></div>
-</div></section>
 
-<!-- 1 ORIGIN -->
-<section class="slide"><div class="max-w-5xl w-full bg-[#f5f1e8] text-zinc-900 rounded-[2.5rem] p-6 sm:p-12 shadow-2xl border-4 border-stone-300">
-  <div class="flex flex-col sm:flex-row justify-between items-start gap-4 border-b-2 border-stone-300 pb-6 mb-6">
-    <div><span class="mono text-xs uppercase px-2.5 py-1 bg-stone-900 text-stone-100 rounded">LOG // VARANASI_ORIGINS.TXT</span>
-    <h2 class="text-3xl sm:text-5xl font-black tracking-tight mt-2 serif">It started as making things.</h2>
-    <p class="italic text-stone-600 serif text-base sm:text-lg">"Roaming the ghats of Varanasi with prime glass before stepping into esports arenas &amp; fashion studios."</p></div>
-    <div class="w-20 h-20 rounded-full border-4 border-dashed border-red-600/70 text-red-600 mono text-[9px] uppercase font-bold flex flex-col items-center justify-center rotate-12 p-1 text-center shrink-0"><span>DARKROOM</span><span class="text-xs font-black">ORIGIN</span><span>CERTIFIED</span></div>
-  </div>
-  <div class="grid md:grid-cols-3 gap-5">
-    <div class="bg-white p-5 rounded-2xl shadow-sm border border-stone-200 -rotate-1"><span class="text-xs mono text-blue-600 font-bold block mb-1">STREET DISCIPLINE</span><h3 class="font-bold text-lg mb-2 serif">Kashi &amp; The Ghats</h3><p class="text-xs text-stone-700 leading-relaxed">The alleyways of Varanasi taught me anticipation. When you shoot in chaotic street light, you master shutter timing and ambient exposure without second chances.</p><div class="mt-4 pt-2 border-t border-dashed border-stone-200 mono text-[10px] text-stone-500">Foundation: Raw Instinct</div></div>
-    <div class="bg-[#fff9e6] p-5 rounded-2xl shadow-sm border-2 border-red-500/40 rotate-2"><span class="text-xs mono text-red-600 font-bold block">SHOT ARCHIVE</span><div class="text-5xl font-black text-red-600 tracking-tighter mt-1">100K+</div><p class="font-bold text-stone-800 text-xs uppercase mt-1">Frames Fired &amp; Curated</p><p class="text-[11px] text-stone-600 mt-2">Covering intense esports championship crowds, nocturnal Varanasi streets, and runway editorial shoots.</p><div class="mt-3 text-[10px] mono text-red-700 bg-red-100 px-2 py-0.5 rounded inline-block">Pure In-Camera Craft</div></div>
-    <div class="bg-white p-5 rounded-2xl shadow-sm border border-stone-200 -rotate-1"><span class="text-xs mono text-emerald-600 font-bold block mb-1">PHILOSOPHY</span><h3 class="font-bold text-lg mb-2 serif">Motion Over Perfection</h3><p class="text-xs text-stone-700 leading-relaxed">Clinical sharpness is sterile. I look for intentional motion drag, natural light halation, and authentic tension that pulls the viewer directly inside the frame.</p><div class="mt-4 pt-2 border-t border-dashed border-stone-200 mono text-[10px] text-stone-500">Aesthetic: Tactile Soul</div></div>
-  </div>
-</div></section>
-
-<div id="hrow" style="height:100%;overflow:hidden"><div id="hinner" style="display:flex;height:100%;width:400%;transition:transform .9s cubic-bezier(.16,1,.3,1)">
-<!-- 2 METRO -->
-<section class="slide hpanel"><div class="max-w-5xl w-full space-y-4">
-  <div class="bg-[#ffcc00] text-black rounded-3xl p-5 sm:p-8 border-4 border-black shadow-2xl">
-    <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-3">
-      <div><span class="bg-black text-[#ffcc00] text-[10px] mono px-2.5 py-0.5 rounded-full uppercase font-bold">Yellow Line Express • Shutterbug.hai</span>
-      <h2 class="text-2xl sm:text-4xl font-black mt-1.5 uppercase leading-none">दिल्ली मेट्रो में आपका स्वागत है</h2>
-      <p class="text-sm font-bold mt-1">Station: <span id="curStn"></span></p></div>
-      <button id="doorBtn" class="px-4 py-2 bg-black text-[#ffcc00] font-black rounded-xl hover:scale-105 transition text-xs uppercase mono shrink-0">Close Doors ⇥</button>
-    </div>
-    <div class="mt-4 pt-3 border-t-2 border-black/20 grid grid-cols-2 sm:grid-cols-4 gap-2" id="stnBtns"></div>
-  </div>
-  <div class="relative bg-zinc-950 border border-zinc-800 rounded-3xl p-6 sm:p-8 overflow-hidden min-h-[290px] flex flex-col justify-center">
-    <div id="doors" class="absolute inset-0 z-30 bg-zinc-900 flex items-center justify-center border-2 border-yellow-500/50"><div class="text-center mono space-y-1"><p class="text-[#ffcc00] text-sm font-bold uppercase tracking-widest">दरवाजे बंद हो रहे हैं • Doors Closing</p><p class="text-zinc-500 text-[11px]">Click "Open Doors" to inspect station projects</p></div></div>
-    <div class="grid md:grid-cols-2 gap-6 items-center" id="stnView"></div>
-  </div>
-</div></section>
-
-<!-- 3 DISCIPLINES -->
-<section class="slide hpanel"><div class="max-w-5xl w-full space-y-5">
-  <div class="border-b border-zinc-800 pb-3 flex justify-between items-end"><div><span class="text-xs mono text-[#ffcc00] uppercase">Selected Mediums</span><h2 class="text-3xl font-black uppercase tracking-tight">Core Disciplines</h2></div><span class="hidden sm:block text-xs mono text-zinc-500">Events • Esports • Street • Editorial</span></div>
-  <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4" id="disc"></div>
-</div></section>
-
-<!-- 4 VISUALS -->
-<section class="slide hpanel"><div class="max-w-5xl w-full space-y-4">
-  <div class="border-b border-zinc-800 pb-3 flex justify-between items-end"><div><span class="text-xs mono text-[#ffcc00] uppercase">Darkroom Log</span><h2 class="text-3xl font-black uppercase tracking-tight">Visual Frames</h2></div><span class="text-xs mono text-zinc-500">@shutterbug.hai</span></div>
-  <div class="grid grid-cols-2 sm:grid-cols-3 gap-3.5" id="vis"></div>
-</div></section>
-
-<!-- 5 CONTACT -->
-<section class="slide hpanel"><div class="max-w-xl w-full bg-zinc-900/90 border border-zinc-800 rounded-3xl p-8 sm:p-12 text-center">
-  <div class="w-16 h-16 rounded-2xl bg-[#ffcc00] text-black mx-auto flex items-center justify-center mb-5 text-3xl">✉</div>
-  <h2 class="text-3xl sm:text-4xl font-black uppercase">Let's Create Together</h2>
-  <p class="mt-2 text-zinc-400 text-xs sm:text-sm font-light max-w-sm mx-auto">Himanshu Singh • Available for live events, esports tournaments, editorial fashion, and street documentary projects across Varanasi and Pan-India.</p>
-  <div class="mt-6 space-y-3">
-    <a href="mailto:contact@shutterbug.hai" class="block py-3.5 bg-[#ffcc00] text-black font-black rounded-xl hover:bg-amber-300 text-xs uppercase tracking-widest">Shoot An Inquiry</a>
-    <a href="https://instagram.com/shutterbug.hai" target="_blank" rel="noreferrer" class="block py-3.5 bg-zinc-800 hover:bg-zinc-700 font-bold rounded-xl text-xs uppercase tracking-widest">Follow @shutterbug.hai</a>
-  </div>
-</div></section>
-</div></div>
-
-</div>
-
-<nav class="fixed left-1/2 -translate-x-1/2 z-50" style="bottom:calc(1.5rem + env(safe-area-inset-bottom,0px))"><div id="dock" class="flex items-center gap-1 sm:gap-2 px-3 py-2 rounded-full bg-zinc-950/90 backdrop-blur-2xl border border-zinc-800 shadow-[0_12px_40px_rgba(0,0,0,0.9)]"></div></nav>
-</div>
-
-<script>
-const $=s=>document.querySelector(s),N=6;
-const stations=[
- {code:"STN-01",name:"Varanasi Ghats / Street Roots",hindi:"काशी घाट",genre:"Street Photography & Culture",metrics:"Ambient Lanterns • Motion Drag",sum:"Raw nocturnal street frames, morning fog along the Ganga, and high-contrast shadow silhouettes captured through prime glass.",acc:"from-amber-600 to-orange-700"},
- {code:"STN-02",name:"Esports Arena / Live Broadcast",hindi:"ई-स्पोर्ट्स स्टेडियम",genre:"Esports & High-Energy Gaming",metrics:"Strobe Sync • Reaction Focus",sum:"Championship player intensity, neon stage strobes, and prolonged flash drag freezing kinetics in hyper-dynamic tournament halls.",acc:"from-blue-600 to-cyan-700"},
- {code:"STN-03",name:"Fashion Week / Editorial Stills",hindi:"फैशन स्टूडियो",genre:"Editorial & High Fashion",metrics:"Monochrome & Grain • High Key",sum:"Curated drape movements, architectural lighting geometry, and avant-garde portraiture with intentional depth of field.",acc:"from-fuchsia-600 to-rose-700"},
- {code:"STN-04",name:"Live Concerts / Cultural Events",hindi:"लाइव इवेंट्स",genre:"Events & Crowd Atmospheres",metrics:"Multi-Angle Stills • Haze Shutter",sum:"Monumental crowd emotion, stage floodlights, and unscripted raw human expression preserved mid-motion.",acc:"from-emerald-600 to-teal-700"}];
-const disc=[["Street Photography","Kashi & Beyond","Fleeting human gestures, textured brick lanes, and atmospheric natural sunlight."],["Esports","Tournament Arenas","Stage pyrotechnics, raw adrenaline, and razor-sharp player focus under neon floods."],["Portrait","Character Studies","Soulful close-ups capturing unguarded eyes, raw textures, and sculpted directional light."],["Editorial","Zine & Narrative","Conceptual series focused on avant-garde styling, film grain, and moody color science."],["Fashion","Apparel & Silhouette","Dynamic fabric drag, brutalist postures, and commercial lookbook aesthetics."],["Events","Gatherings & Gigs","Fast-response photojournalism inside festivals, private sets, and crowded stages."]];
-const vis=[["Varanasi Street","Twilight at Dashashwamedh","1/8s dragged shutter under brass lamp flames"],["Esports Arena","Championship Climax","Freeze-flash synchronisation on main stage"],["Fashion Lookbook","Obsidian Monochrome","High-contrast architectural shadows and tailored silhouette"],["Street Portrait","The Silk Weaver of Banaras","Natural beam hard sunlight inside handloom room"],["Editorial Series","Motion Blur in Rain","Prism reflections with 35mm optical grain"],["Live Events","The Stadium Horizon","Crowd silhouette drenched in golden haze"]];
-const labels=["Home","Origin","Metro","Genres","Visuals","Contact"];
-
-$("#disc").innerHTML=disc.map(d=>`<div class="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-5 hover:border-zinc-600 transition group"><span class="text-[10px] mono uppercase text-amber-400 font-bold">${d[1]}</span><h3 class="text-lg font-bold mt-1 group-hover:text-[#ffcc00] transition-colors">${d[0]}</h3><p class="text-xs text-zinc-400 mt-1 font-light leading-relaxed">${d[2]}</p></div>`).join("");
-$("#vis").innerHTML=vis.map((v,i)=>`<div class="group relative aspect-[4/3] rounded-2xl bg-zinc-900 border border-zinc-800 overflow-hidden flex flex-col justify-end p-4 hover:border-zinc-600 transition"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-10"></div><div class="absolute inset-0 flex items-center justify-center text-zinc-700 mono text-[11px] uppercase tracking-widest group-hover:scale-105 transition-transform">[ Frame #${i+1} • 35mm ]</div><div class="relative z-20"><span class="text-[9px] mono text-amber-400 uppercase font-bold tracking-wider">${v[0]}</span><h4 class="text-sm font-bold truncate">${v[1]}</h4><p class="text-[10px] text-zinc-400 font-light truncate">${v[2]}</p></div></div>`).join("");
-
-let idx=0,locked=false;
-function lock(){locked=true;setTimeout(()=>locked=false,950)}
-function show(i){
-  idx=i;
-  $("#track").style.transform=`translateY(-${Math.min(i,2)*100}%)`;
-  $("#hinner").style.transform=`translateX(-${Math.max(i-2,0)*25}%)`;
-  $("#secNo").textContent=`SECTION ${i+1} / ${N}`;
-  document.querySelectorAll(".dock-btn").forEach((b,j)=>b.classList.toggle("active",j===i));
-}
-function step(d){if(locked)return;const t=Math.max(0,Math.min(N-1,idx+d));if(t!==idx){lock();show(t)}}
-function jump(i){if(locked||i===idx)return;lock();show(i)}
-$("#dock").innerHTML=labels.map((l,i)=>`<button class="dock-btn px-3 sm:px-4 py-1.5 rounded-full text-xs mono uppercase tracking-wider text-zinc-400 hover:text-white transition-all ${i===0?"active":""}">${l}</button>`).join("");
-document.querySelectorAll(".dock-btn").forEach((b,i)=>b.onclick=()=>jump(i));
-document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>jump(+b.dataset.go));
-
-addEventListener("wheel",e=>{if(e.target.closest&&e.target.closest(".hscroll")&&Math.abs(e.deltaX)>Math.abs(e.deltaY))return;e.preventDefault();if(Math.abs(e.deltaY)<25)return;step(e.deltaY>0?1:-1)},{passive:false});
-addEventListener("keydown",e=>{
-  if(e.key==="ArrowDown"||e.key==="PageDown"){e.preventDefault();step(1)}
-  else if(e.key==="ArrowUp"||e.key==="PageUp"){e.preventDefault();step(-1)}
-});
-let ty=0,tx=0,inH=false;
-addEventListener("touchstart",e=>{ty=e.touches[0].clientY;tx=e.touches[0].clientX;inH=!!(e.target.closest&&e.target.closest(".hscroll"))},{passive:true});
-addEventListener("touchmove",e=>{
-  if(inH){const dx=Math.abs(e.touches[0].clientX-tx),dy=Math.abs(e.touches[0].clientY-ty);if(dx>dy)return}
-  e.preventDefault()
-},{passive:false});
-addEventListener("touchend",e=>{
-  const d=ty-e.changedTouches[0].clientY,dx=tx-e.changedTouches[0].clientX;
-  if(Math.abs(dx)>Math.abs(d)){if(idx>=2&&Math.abs(dx)>40)step(dx>0?1:-1);return}
-  if(Math.abs(d)>40)step(d>0?1:-1)
-},{passive:true});
-
-let cur=0,open=true;
-function setDoors(o){open=o;$("#doors").classList.toggle("shut",!o);$("#doorBtn").textContent=o?"Close Doors ⇥":"Open Doors ⇤"}
-function renderStn(){
-  const s=stations[cur];
-  $("#curStn").textContent=s.name;
-  $("#stnBtns").innerHTML=stations.map((x,i)=>`<button data-i="${i}" class="p-2.5 rounded-xl border-2 text-left mono transition-all ${i===cur?"bg-black text-[#ffcc00] border-black shadow":"bg-black/10 text-black border-black/20 hover:bg-black/20"}"><div class="text-[9px] opacity-75">${x.code}</div><div class="font-bold text-xs truncate">${x.name.split("/")[0]}</div><div class="text-[10px] opacity-90">${x.hindi}</div></button>`).join("");
-  $("#stnBtns").querySelectorAll("button").forEach(b=>b.onclick=()=>{cur=+b.dataset.i;setDoors(true);renderStn()});
-  $("#stnView").innerHTML=`<div><span class="text-[10px] mono uppercase px-2.5 py-1 rounded bg-yellow-400/10 text-yellow-400 border border-yellow-400/20">${s.genre}</span><h3 class="text-2xl sm:text-3xl font-black uppercase mt-3">${s.name.split("/")[0]}</h3><p class="text-xs text-zinc-300 mt-2 font-light leading-relaxed">${s.sum}</p><div class="mt-4 text-xs mono text-zinc-400 flex items-center gap-2"><span class="text-[#ffcc00]">✦</span><span>${s.metrics}</span></div></div><div class="aspect-[16/9] rounded-2xl bg-gradient-to-br ${s.acc} p-1 relative flex items-center justify-center shadow-xl"><div class="absolute inset-0 bg-black/40 rounded-2xl"></div><div class="relative z-10 text-center p-4"><div class="text-4xl mb-2">📷</div><span class="mono text-xs uppercase font-bold block">35mm Optical Capture</span><span class="text-[10px] mono text-zinc-300">Himanshu Singh • Varanasi</span></div></div>`;
-}
-$("#doorBtn").onclick=()=>setDoors(!open);
-renderStn();
-
-let fast=false;
-$("#shutterBtn").onclick=()=>{fast=!fast;const v=fast?"1/500s":"1/15s";$("#shutterTxt").textContent=v;$("#hudShutter").textContent=v};
-</script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
