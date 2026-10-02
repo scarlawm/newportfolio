@@ -7,9 +7,9 @@
 .about-story:after{content:'GANGA';position:absolute;right:-15px;bottom:-38px;font:700 100px var(--serif);color:var(--blue);opacity:.12;transform:rotate(-8deg)}
 .kashi-card{min-height:390px;position:relative;overflow:hidden}
 .kashi-card:after{content:'ॐ';position:absolute;right:15px;bottom:-45px;font:180px var(--serif);color:var(--yellow);opacity:.08}
-.ganga-scene{grid-column:1/-1;height:360px;position:relative;overflow:hidden;border:1px solid #2226;box-shadow:8px 8px 0 #1113;background:#c9d9d7 url('../assets/kashi-river.webp') center center / cover no-repeat;isolation:isolate}
-.ganga-scene:before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(250,239,210,.08),transparent 42%,rgba(10,25,30,.14));z-index:1;pointer-events:none}
-.ganga-scene:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,16,16,.28),transparent 28%,transparent 72%,rgba(16,16,16,.18));mix-blend-mode:multiply;z-index:2;pointer-events:none}
+.ganga-scene{grid-column:1/-1;height:360px;position:relative;overflow:hidden;border:1px solid #2226;box-shadow:8px 8px 0 #1113;background-color:#c9d9d7;background-image:url('https://raw.githubusercontent.com/scarlawm/newportfolio/main/assets/kashi-river.webp');background-position:center center;background-repeat:no-repeat;background-size:cover;isolation:isolate;transform:translateZ(0)}
+.ganga-scene:before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(250,239,210,.06),transparent 42%,rgba(10,25,30,.16));z-index:1;pointer-events:none}
+.ganga-scene:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,16,16,.24),transparent 28%,transparent 72%,rgba(16,16,16,.16));mix-blend-mode:multiply;z-index:2;pointer-events:none}
 .ganga-sky,.ghats,.ganga-water,.boat{display:none}
 .scene-label{position:absolute;z-index:5;left:18px;top:18px;padding:8px 10px;background:var(--black);color:var(--cream);font:9px var(--mono);letter-spacing:.12em;box-shadow:4px 4px 0 var(--red)}
 .scene-caption{position:absolute;z-index:5;right:18px;bottom:16px;padding:7px 9px;background:var(--yellow);color:var(--black);font:9px var(--mono);transform:rotate(-2deg)}
@@ -27,6 +27,6 @@
 .pexels-stat strong{font:700 clamp(75px,11vw,145px)/.75 var(--serif)}
 .pexels-stat span{font:10px var(--mono);letter-spacing:.12em}
 .pexels-stat a{width:max-content;color:var(--black);text-decoration:none;border-bottom:1px solid var(--black);font:11px var(--mono);padding-bottom:4px}
-@media(max-width:768px){.about{padding:72px 12px 90px}.about-board{padding:18px}.about-layout{grid-template-columns:1fr}.about-story,.kashi-card{min-height:0}.about-story{padding:22px}.about-story h3{font-size:29px}.ganga-scene{height:300px;animation:kashiPanMobile 14s ease-in-out infinite alternate}.scene-label{left:10px;top:10px}.scene-caption{right:10px;bottom:10px}.pexels-section{padding:72px 12px 90px}.pexels-board{grid-template-columns:1fr;gap:14px}.pexels-copy{padding:28px}.pexels-copy h2{font-size:72px}.pexels-stat{min-height:270px}.about-board:before{font-size:90px}}
+@media(max-width:768px){.about{padding:72px 12px 90px}.about-board{padding:18px}.about-layout{grid-template-columns:1fr}.about-story,.kashi-card{min-height:0}.about-story{padding:22px}.about-story h3{font-size:29px}.ganga-scene{height:300px;animation:kashiPanMobile 14s ease-in-out infinite alternate;background-position:35% 50%;background-size:auto 108%}.scene-label{left:10px;top:10px}.scene-caption{right:10px;bottom:10px}.pexels-section{padding:72px 12px 90px}.pexels-board{grid-template-columns:1fr;gap:14px}.pexels-copy{padding:28px}.pexels-copy h2{font-size:72px}.pexels-stat{min-height:270px}.about-board:before{font-size:90px}}
 @keyframes kashiPanMobile{0%{background-position:35% 50%;background-size:auto 108%}100%{background-position:65% 48%;background-size:auto 116%}}
 @media(prefers-reduced-motion:reduce){.ganga-scene{animation:none}}
