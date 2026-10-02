@@ -9,26 +9,21 @@
     {label:'Portrait / Muse',title:'Chehra bole, camera sune.',description:'Portraits jo pose se zyada insaan ko yaad rakhte hain.',tags:['Character','Expression','People','Muse']},
     {label:'Culture',title:'Rang, riwaaz aur raunak.',description:'Holi, festivals aur culture ke woh frames jahan camera bhi thoda nachta hai.',tags:['Colour','Culture','Movement','Joy']}
   ];
-  let work=0,doors=true,fast=false;
+  let work=0,closed=true,fast=false;
   const sections=()=>$$('[data-section]');
   function dock(){const d=$('#dock');if(!d)return;d.innerHTML=['Home','About','Work','Contact'].map((x,i)=>`<button class="dock-btn ${i===0?'active':''}" data-go="${i}">${x}</button>`).join('');$$('.dock-btn').forEach(b=>b.onclick=()=>go(+b.dataset.go));}
   function number(i=0){const n=$('#secNo');if(n)n.textContent=`${String(i+1).padStart(2,'0')} / 04`;}
   function go(i){const target=sections()[Math.max(0,Math.min(3,i))];if(target)target.scrollIntoView({behavior:'smooth',block:'start'});}
   function frameMarkup(item,i){return `<article class="frame"><div class="frame-content"><span class="frame-code">${String(i+1).padStart(2,'0')} / ${item.label.toUpperCase()}</span><h4>${['Light finds its way.','Beech ke pal.','Kahani ek frame mein.','Feeling ko rehne do.'][i]}</h4><p>YOUR PHOTOGRAPH HERE</p></div></article>`}
-  function renderWork(){const gallery=$('#workGallery');if(!gallery)return;gallery.innerHTML=items.map((item,i)=>`<article class="work-slide" data-work-slide="${i}"><div class="work-copy"><span class="kicker">${item.label.toUpperCase()}</span><h3>${item.title}</h3><p>${item.description}</p><div class="work-tags">${item.tags.map(t=>`<span>${t}</span>`).join('')}</div><small class="work-hint">SWIPE / SCROLL →</small></div><div class="slide-gallery">${[0,1,2,3].map(n=>frameMarkup(item,n)).join('')}</div></article>`).join('');
-    gallery.scrollLeft=0;
-    gallery.onscroll=()=>{const i=Math.round(gallery.scrollLeft/gallery.clientWidth);if(i!==work){work=i;syncTabs();}};
-    gallery.ontouchstart=()=>{};
-    syncTabs();
-  }
+  function renderWork(){const gallery=$('#workGallery');if(!gallery)return;gallery.innerHTML=items.map((item,i)=>`<article class="work-slide" data-work-slide="${i}"><div class="work-copy"><span class="kicker">${item.label.toUpperCase()}</span><h3>${item.title}</h3><p>${item.description}</p><div class="work-tags">${item.tags.map(t=>`<span>${t}</span>`).join('')}</div><small class="work-hint">SWIPE / SCROLL →</small></div><div class="slide-gallery">${[0,1,2,3].map(n=>frameMarkup(item,n)).join('')}</div></article>`).join('');gallery.scrollLeft=0;gallery.onscroll=()=>{const i=Math.round(gallery.scrollLeft/gallery.clientWidth);if(i!==work){work=i;syncTabs();}};syncTabs();}
   function renderTabs(){const t=$('#workTabs');if(!t)return;t.innerHTML=items.map((x,i)=>`<button class="work-tab ${i===work?'active':''}" data-work="${i}"><small>STN-${String(i+1).padStart(2,'0')}</small><strong>${x.label}</strong></button>`).join('');$$('.work-tab').forEach(b=>b.onclick=()=>scrollWork(+b.dataset.work));}
   function syncTabs(){renderTabs();const tabs=$$('.work-tab');if(tabs[work])tabs[work].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
   function scrollWork(i){work=Math.max(0,Math.min(items.length-1,i));const g=$('#workGallery');if(g)g.scrollTo({left:work*g.clientWidth,behavior:'smooth'});syncTabs();}
-  function setDoors(open){doors=open;const d=$('#doors'),b=$('#doorBtn');if(d)d.classList.toggle('shut',open);if(b)b.textContent=open?'Close Doors ⇥':'Open Doors ⇤';if(!open){const g=$('#workGallery');if(g)g.scrollTo({left:0,behavior:'smooth'});work=0;syncTabs();}}
-  function openDoors(){setDoors(true);setTimeout(()=>scrollWork(0),120)}
+  function setDoors(isClosed){closed=isClosed;const d=$('#doors'),b=$('#doorBtn');if(d)d.classList.toggle('shut',isClosed);if(b)b.textContent=isClosed?'Open Doors ⇤':'Close Doors ⇥';if(isClosed){const g=$('#workGallery');if(g)g.scrollTo({left:0,behavior:'smooth'});work=0;syncTabs();}}
+  function openDoors(){setDoors(false);setTimeout(()=>scrollWork(0),150)}
   function shutter(){fast=!fast;const v=fast?'1/500s':'1/15s';if($('#shutterTxt'))$('#shutterTxt').textContent=v;if($('#hudShutter'))$('#hudShutter').textContent=v;}
   function observe(){const io=new IntersectionObserver(es=>{const e=es.filter(x=>x.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(!e)return;const i=+e.target.dataset.section;number(i);$$('.dock-btn').forEach((b,n)=>b.classList.toggle('active',n===i));},{threshold:.55});sections().forEach(s=>io.observe(s));}
-  function desktopWorkWheel(e){if(doors)return;const r=$('#workGallery')?.getBoundingClientRect();if(!r||e.clientY<r.top||e.clientY>r.bottom)return;const delta=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;if(Math.abs(delta)<10)return;e.preventDefault();scrollWork(work+(delta>0?1:-1));}
-  function init(){dock();renderTabs();renderWork();$('#pexelsLink')?.setAttribute('href',PEXELS);$('#doorBtn')?.addEventListener('click',()=>doors?openDoors():setDoors(true));$('#openDoorsInline')?.addEventListener('click',openDoors);$('#shutterBtn')?.addEventListener('click',shutter);$$('[data-go]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();go(+b.dataset.go)}));window.addEventListener('wheel',desktopWorkWheel,{passive:false});observe();}
+  function desktopWorkWheel(e){if(closed)return;const r=$('#workGallery')?.getBoundingClientRect();if(!r||e.clientY<r.top||e.clientY>r.bottom)return;const delta=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;if(Math.abs(delta)<10)return;e.preventDefault();scrollWork(work+(delta>0?1:-1));}
+  function init(){dock();renderWork();$('#pexelsLink')?.setAttribute('href',PEXELS);$('#doorBtn')?.addEventListener('click',()=>setDoors(!closed));$('#openDoorsInline')?.addEventListener('click',openDoors);$('#shutterBtn')?.addEventListener('click',shutter);$$('[data-go]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();go(+b.dataset.go)}));window.addEventListener('wheel',desktopWorkWheel,{passive:false});observe();}
   document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init,{once:true}):init();
 })();
