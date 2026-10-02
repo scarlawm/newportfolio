@@ -20,9 +20,14 @@
     sections()[0]?.scrollIntoView({behavior:'auto',block:'start'});
   }
 
-  function dock(){const d=$('#dock');if(!d)return;d.innerHTML=['Home','About','Work','Contact'].map((x,i)=>`<button class="dock-btn ${i===0?'active':''}" data-go="${i}">${x}</button>`).join('');$$('.dock-btn').forEach(b=>b.onclick=()=>go(+b.dataset.go));}
-  function number(i=0){const n=$('#secNo');if(n)n.textContent=`${String(i+1).padStart(2,'0')} / 04`;}
-  function go(i){const target=sections()[Math.max(0,Math.min(3,i))];if(target)target.scrollIntoView({behavior:'smooth',block:'start'});}
+  function dock(){
+    const d=$('#dock');
+    if(!d)return;
+    d.innerHTML=['Home','About','Work','Pexels','Contact'].map((x,i)=>`<button class="dock-btn ${i===0?'active':''}" data-go="${i}">${x}</button>`).join('');
+    $$('.dock-btn').forEach(b=>b.onclick=()=>go(+b.dataset.go));
+  }
+  function number(i=0){const n=$('#secNo');if(n)n.textContent=`${String(i+1).padStart(2,'0')} / ${String(sections().length).padStart(2,'0')}`;}
+  function go(i){const list=sections();const target=list[Math.max(0,Math.min(list.length-1,i))];if(target)target.scrollIntoView({behavior:'smooth',block:'start'});}
   function frameMarkup(item,i){return `<article class="frame"><div class="frame-content"><span class="frame-code">${String(i+1).padStart(2,'0')} / ${item.label.toUpperCase()}</span><h4>${['Light finds its way.','Beech ke pal.','Kahani ek frame mein.','Feeling ko rehne do.'][i]}</h4><p>YOUR PHOTOGRAPH HERE</p></div></article>`}
   function renderWork(){const gallery=$('#workGallery');if(!gallery)return;gallery.innerHTML=items.map((item,i)=>`<article class="work-slide" data-work-slide="${i}"><div class="work-copy"><span class="kicker">${item.label.toUpperCase()}</span><h3>${item.title}</h3><p>${item.description}</p><div class="work-tags">${item.tags.map(t=>`<span>${t}</span>`).join('')}</div><small class="work-hint">SWIPE / SCROLL →</small></div><div class="slide-gallery">${[0,1,2,3].map(n=>frameMarkup(item,n)).join('')}</div></article>`).join('');gallery.scrollLeft=0;gallery.onscroll=()=>{const i=Math.round(gallery.scrollLeft/gallery.clientWidth);if(i!==work){work=i;syncTabs();}};syncTabs();}
   function renderTabs(){const t=$('#workTabs');if(!t)return;t.innerHTML=items.map((x,i)=>`<button class="work-tab ${i===work?'active':''}" data-work="${i}"><small>STN-${String(i+1).padStart(2,'0')}</small><strong>${x.label}</strong></button>`).join('');$$('.work-tab').forEach(b=>b.onclick=()=>scrollWork(+b.dataset.work));}
@@ -35,7 +40,14 @@
   function desktopWorkWheel(e){if(closed)return;const r=$('#workGallery')?.getBoundingClientRect();if(!r||e.clientY<r.top||e.clientY>r.bottom)return;const delta=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;if(Math.abs(delta)<10)return;e.preventDefault();scrollWork(work+(delta>0?1:-1));}
   function init(){
     forceHome();
-    dock();renderWork();$('#pexelsLink')?.setAttribute('href',PEXELS);$('#doorBtn')?.addEventListener('click',()=>setDoors(!closed));$('#openDoorsInline')?.addEventListener('click',openDoors);$('#shutterBtn')?.addEventListener('click',shutter);$$('[data-go]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();go(+b.dataset.go)}));window.addEventListener('wheel',desktopWorkWheel,{passive:false});observe();
+    dock();renderWork();
+    $('#pexelsLink')?.setAttribute('href',PEXELS);
+    $('#doorBtn')?.addEventListener('click',()=>setDoors(!closed));
+    $('#openDoorsInline')?.addEventListener('click',openDoors);
+    $('#shutterBtn')?.addEventListener('click',shutter);
+    $$('[data-go]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();go(+b.dataset.go)}));
+    window.addEventListener('wheel',desktopWorkWheel,{passive:false});
+    observe();
     window.addEventListener('pageshow',forceHome);
   }
   document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init,{once:true}):init();
