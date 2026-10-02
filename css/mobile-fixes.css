@@ -1,0 +1,56 @@
+/* Mobile polish: keep the experience block clear of the red graphic */
+@media (max-width: 768px) {
+  .home-content {
+    padding: 0;
+  }
+
+  .home .experience {
+    position: absolute;
+    left: 7%;
+    top: 64%;
+    margin: 0;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .home .experience b {
+    font-size: clamp(40px, 12vw, 54px);
+    line-height: 1;
+  }
+
+  .home .experience span {
+    font-size: 8px;
+    line-height: 1.45;
+    background: rgba(238, 228, 210, .92);
+    padding: 4px 6px;
+  }
+
+  /* Push the red strip lower so it never competes with 06+ */
+  .home .red-stroke {
+    bottom: 7%;
+    z-index: 2;
+  }
+
+  /* Keep the food doodles away from the name */
+  .home .jalebi-doodle {
+    right: 7%;
+    top: 15%;
+    z-index: 10;
+    color: var(--yellow);
+    text-shadow: 1px 1px 0 #7b5b00;
+  }
+
+  .home .kachori-doodle {
+    top: 17%;
+  }
+
+  .home .enter-btn {
+    position: absolute;
+    left: 7%;
+    top: 75%;
+    margin: 0;
+    z-index: 30;
+  }
+}
