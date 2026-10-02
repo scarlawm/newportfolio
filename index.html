@@ -6,355 +6,68 @@
   <meta name="theme-color" content="#101010">
   <meta name="description" content="Himanshu Singh aka shutterbug.hai — photographer from Varanasi with 6+ years of experience.">
   <title>Himanshu Singh — shutterbug.hai</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
   <div id="app">
-
-    <!-- CAMERA HUD -->
-    <div class="camera-hud pointer-events-none fixed inset-0 z-40 select-none mono" aria-hidden="true">
-      <div class="hud-top">
-        <div class="hud-record"><span class="rec-dot"></span><span>REC</span></div>
-        <div class="hud-brand">SHUTTERBUG.HAI</div>
-      </div>
-
-      <div class="hud-corners">
-        <span class="corner tl"></span>
-        <span class="corner tr"></span>
-        <span class="corner bl"></span>
-        <span class="corner br"></span>
-      </div>
-
-      <div class="hud-bottom">
-        <span>VARANASI</span>
-        <span id="hudShutter">1/15s</span>
-        <span id="secNo">01 / 04</span>
-      </div>
+    <div class="camera-hud mono" aria-hidden="true">
+      <div class="hud-top"><div class="hud-record"><span class="rec-dot"></span>REC</div><div>SHUTTERBUG.HAI</div></div>
+      <div class="hud-corners"><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></div>
+      <div class="hud-bottom"><span>VARANASI</span><span id="hudShutter">1/15s</span><span id="secNo">01 / 04</span></div>
     </div>
 
-    <!-- HEADER -->
-    <header class="site-header fixed top-0 left-0 right-0 z-50">
-      <div class="header-inner max-w-6xl mx-auto px-4 sm:px-6">
-        <a href="#home" class="brand-lockup" data-go="0" aria-label="Home">
-          <span class="brand-box">SB</span>
-          <span class="brand-copy">
-            <strong>Himanshu Singh</strong>
-            <small>aka shutterbug.hai</small>
-          </span>
-        </a>
-
-        <div class="header-actions">
-          <span class="location-pill">📍 Varanasi, India</span>
-          <button id="shutterBtn" type="button" class="shutter-pill" aria-label="Toggle shutter speed">
-            <span>DRAG</span>
-            <b id="shutterTxt">1/15s</b>
-          </button>
-        </div>
+    <header class="site-header">
+      <div class="header-inner">
+        <button class="brand-lockup" data-go="0" aria-label="Home"><span class="brand-box">SB</span><span><strong>Himanshu Singh</strong><small>aka shutterbug.hai</small></span></button>
+        <div class="header-actions"><span class="location-pill">📍 Varanasi, India</span><button id="shutterBtn" class="shutter-pill" type="button">DRAG <b id="shutterTxt">1/15s</b></button></div>
       </div>
     </header>
 
-    <!-- MAIN -->
     <main id="track">
-
-      <!-- ===================================================
-           HOME
-           =================================================== -->
-      <section class="slide page-section" id="home" data-section="0" aria-labelledby="home-title">
-        <div class="home-wrap">
-          <div class="home-card">
-            <div class="grain"></div>
-            <div class="banarasi-pattern"></div>
-
-            <div class="home-badge">VARANASI • 6+ YEARS</div>
-
-            <div class="home-title-wrap">
-              <p class="eyebrow">PHOTOGRAPHER / CREATIVE VISUALS</p>
-              <h1 id="home-title">
-                Himanshu<br>
-                <span>Singh.</span>
-              </h1>
-              <div class="aka-line">aka <strong>shutterbug.hai</strong></div>
-            </div>
-
-            <div class="home-plate">
-              <div class="plate-item">
-                <span>BASED IN</span>
-                <strong>VARANASI</strong>
-              </div>
-              <div class="plate-divider"></div>
-              <div class="plate-item">
-                <span>EXPERIENCE</span>
-                <strong>6+ YEARS</strong>
-              </div>
-            </div>
-
-            <div class="home-food-stack" aria-hidden="true">
-              <span class="food-chip paan">पान</span>
-              <span class="food-chip kachori">कचौड़ी</span>
-              <span class="food-chip chai">चाय</span>
-              <span class="food-chip jalebi">जलेबी</span>
-            </div>
-
-            <button data-go="1" type="button" class="home-scroll">
-              <span>ENTER</span>
-              <span class="scroll-line"></span>
-              <span>THE STORY</span>
-            </button>
+      <section class="slide page-section home" id="home" data-section="0">
+        <div class="home-art">
+          <div class="sun-disc"></div><div class="blue-block"></div><div class="yellow-ticket">KASHI / 6+</div>
+          <div class="red-stroke"></div><div class="paan-doodle">पान</div><div class="chai-doodle">चाय</div><div class="jalebi-doodle">जलेबी</div><div class="kachori-doodle">कचौड़ी</div>
+          <div class="frame-corner fc1"></div><div class="frame-corner fc2"></div>
+          <div class="home-content">
+            <div class="home-topline"><span>PHOTOGRAPHER</span><span>VARANASI / INDIA</span></div>
+            <h1>Himanshu<br><i>Singh</i></h1>
+            <div class="aka">aka <strong>shutterbug.hai</strong></div>
+            <div class="experience"><b>06+</b><span>YEARS<br>BEHIND THE CAMERA</span></div>
+            <button class="enter-btn" data-go="1" type="button"><span>ENTER THE FRAME</span><b>↓</b></button>
           </div>
-
-          <div class="home-caption">
-            <span>01</span>
-            <span>“See the moment. Feel the frame.”</span>
-            <span>↓</span>
-          </div>
+          <div class="home-note">“Every frame starts with seeing.”</div>
+          <div class="home-sticker">KASHI<br><b>कैमरा</b></div>
         </div>
       </section>
 
-      <!-- ===================================================
-           ABOUT
-           =================================================== -->
-      <section class="slide page-section" id="about" data-section="1" aria-labelledby="about-title">
+      <section class="slide page-section about" id="about" data-section="1">
         <div class="about-board">
-
-          <div class="board-header">
-            <div>
-              <span class="board-label">DARKROOM NOTEBOOK / 02</span>
-              <h2 id="about-title">Six years of looking differently.</h2>
-            </div>
-            <div class="stamp">
-              <small>KASHI</small>
-              <strong>6+</strong>
-              <small>YEARS</small>
-            </div>
-          </div>
-
+          <div class="board-header"><div><span class="board-label">DARKROOM NOTEBOOK / 02</span><h2>Six years of looking differently.</h2></div><div class="stamp"><small>KASHI</small><strong>6+</strong><small>YEARS</small></div></div>
           <div class="about-layout">
-
-            <article class="about-story">
-              <div class="tape"></div>
-              <span class="red-kicker">FROM VARANASI</span>
-              <h3>Photography became the way I remember life.</h3>
-              <p>
-                I'm Himanshu Singh, a photographer from Varanasi with more than six years behind the camera.
-                I follow light, movement, people and the tiny details that make an ordinary moment feel worth keeping.
-              </p>
-              <p>
-                My work is rooted in observation — finding the frame before the moment disappears,
-                keeping the atmosphere intact and letting the photograph feel lived-in rather than manufactured.
-              </p>
-            </article>
-
-            <article class="kashi-card">
-              <div class="kashi-top">
-                <span>काशी कैमरा क्लब</span>
-                <span>EST. 2020+</span>
-              </div>
-
-              <div class="kashi-plate">
-                <div class="dish-ring"></div>
-                <div class="plate-text">
-                  <small>ONE CITY</small>
-                  <strong>ENDLESS<br>FRAMES</strong>
-                  <em>Varanasi • India</em>
-                </div>
-              </div>
-
-              <div class="kashi-menu">
-                <span>पान की लाली</span>
-                <span>गंगा की रोशनी</span>
-                <span>कचौड़ी की गली</span>
-                <span>घाट की धुंध</span>
-              </div>
-            </article>
-
-            <article class="reach-card">
-              <div class="reach-top">
-                <span>PUBLIC REACH</span>
-                <span>PEXELS</span>
-              </div>
-              <strong>9M+</strong>
-              <p>views across my Pexels photography.</p>
-
-              <!-- Replace URL in main.js -->
-              <a id="pexelsLink"
-                 href="https://www.pexels.com/"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="pexels-link">
-                VIEW PROFILE ↗
-              </a>
-            </article>
-
-            <article class="quote-strip">
-              <span class="quote-open">“</span>
-              <div>
-                <strong>Motion is not the enemy of a photograph.</strong>
-                <p>It can be the reason the frame feels alive.</p>
-              </div>
-              <span class="quote-city">KASHI / 25.3176° N</span>
-            </article>
-
+            <article class="about-story"><span class="red-kicker">FROM VARANASI</span><h3>Photography became the way I remember life.</h3><p>I'm Himanshu Singh, a professional photographer from Varanasi with more than six years behind the camera. I follow light, movement, people and the tiny details that make an ordinary moment feel worth keeping.</p><p>My work is rooted in observation — finding the frame before the moment disappears, keeping the atmosphere intact and letting the photograph feel lived-in rather than manufactured.</p></article>
+            <article class="kashi-card"><div class="kashi-top"><span>काशी कैमरा क्लब</span><span>EST. 2020+</span></div><div class="kashi-plate"><div class="dish-ring"></div><div class="plate-text"><small>ONE CITY</small><strong>ENDLESS<br>FRAMES</strong><em>Varanasi • India</em></div></div><div class="kashi-menu"><span>पान की लाली</span><span>गंगा की रोशनी</span><span>कचौड़ी की गली</span><span>घाट की धुंध</span></div></article>
+            <article class="reach-card"><div class="reach-top"><span>PUBLIC REACH</span><span>PEXELS</span></div><strong>9M+</strong><p>views across my Pexels photography.</p><a id="pexelsLink" href="https://www.pexels.com/@himanshu-singh-148036179/" target="_blank" rel="noopener" class="pexels-link">VIEW PROFILE ↗</a></article>
+            <article class="quote-strip"><span class="quote-open">“</span><div><strong>Motion is not the enemy of a photograph.</strong><p>It can be the reason the frame feels alive.</p></div><span class="quote-city">KASHI / 25.3176° N</span></article>
           </div>
         </div>
       </section>
 
-      <!-- ===================================================
-           WORK / CONTACT SHEET
-           =================================================== -->
-      <section class="work-section page-section" id="work" data-section="2" aria-labelledby="work-title">
-        <div id="hinner">
-
-          <!-- WORK LANDING -->
-          <section class="work-panel slide" data-work-index="0">
-            <div class="work-board">
-              <div class="work-topbar">
-                <div>
-                  <span class="board-label yellow">CONTACT SHEET / 03</span>
-                  <h2 id="work-title">Chala guru, dekhal jaye.</h2>
-                  <p>Different rooms. Different light. Same obsession with the frame.</p>
-                </div>
-
-                <button id="doorBtn" type="button" class="door-button" aria-expanded="true">
-                  Close Doors ⇥
-                </button>
-              </div>
-
-              <div id="workTabs" class="work-tabs"></div>
-
-              <div class="work-stage">
-                <div id="doors" class="doors">
-                  <div class="doors-inner">
-                    <span class="doors-script">दरवाजा बंद बा</span>
-                    <strong>अबहीं बाहर बानी</strong>
-                    <p>खोलऽ, फिर आराम से देखऽ।</p>
-                    <button id="openDoorsInline" type="button">Open Doors</button>
-                  </div>
-                </div>
-
-                <div id="workCopy" class="work-copy"></div>
-                <div id="workGallery" class="work-gallery"></div>
-              </div>
-            </div>
-          </section>
-
-          <!-- EVENTS -->
-          <section class="work-panel slide" data-work-index="1">
-            <div class="category-board">
-              <div class="category-heading">
-                <span>01 • EVENTS</span>
-                <h3>Moments before<br>they disappear.</h3>
-                <p>Celebrations, people, stages, chaos, emotion — photographs that keep the atmosphere alive.</p>
-              </div>
-              <div class="category-gallery" data-gallery="events"></div>
-            </div>
-          </section>
-
-          <!-- ESPORTS -->
-          <section class="work-panel slide" data-work-index="2">
-            <div class="category-board">
-              <div class="category-heading">
-                <span>02 • ESPORTS</span>
-                <h3>Pressure.<br>Light. Reaction.</h3>
-                <p>High-energy frames built around timing, expression, atmosphere and split-second decisions.</p>
-              </div>
-              <div class="category-gallery" data-gallery="esports"></div>
-            </div>
-          </section>
-
-          <!-- STREET -->
-          <section class="work-panel slide" data-work-index="3">
-            <div class="category-board">
-              <div class="category-heading">
-                <span>03 • STREET</span>
-                <h3>Kashi has<br>no pause button.</h3>
-                <p>Lanes, faces, light, texture and those little moments that happen only once.</p>
-              </div>
-              <div class="category-gallery" data-gallery="street"></div>
-            </div>
-          </section>
-
-          <!-- EDITORIAL -->
-          <section class="work-panel slide" data-work-index="4">
-            <div class="category-board">
-              <div class="category-heading">
-                <span>04 • EDITORIAL</span>
-                <h3>Built with light.<br>Finished in frame.</h3>
-                <p>Concepts, fashion, details and compositions made to carry a mood.</p>
-              </div>
-              <div class="category-gallery" data-gallery="editorial"></div>
-            </div>
-          </section>
-
-          <!-- PORTRAIT -->
-          <section class="work-panel slide" data-work-index="5">
-            <div class="category-board">
-              <div class="category-heading">
-                <span>05 • PORTRAIT / MUSE</span>
-                <h3>People first.<br>Pose second.</h3>
-                <p>Portraits that keep personality in the room, not just symmetry in the frame.</p>
-              </div>
-              <div class="category-gallery" data-gallery="portrait"></div>
-            </div>
-          </section>
-
-          <!-- HOLI / CULTURE -->
-          <section class="work-panel slide" data-work-index="6">
-            <div class="category-board">
-              <div class="category-heading">
-                <span>06 • HOLI / CULTURE</span>
-                <h3>Colour with<br>no quiet mode.</h3>
-                <p>Festival energy, culture, movement and the beautiful chaos of celebrating together.</p>
-              </div>
-              <div class="category-gallery" data-gallery="holi"></div>
-            </div>
-          </section>
-
-        </div>
+      <section class="work-section page-section" id="work" data-section="2">
+        <div class="work-panel"><div class="work-board">
+          <div class="work-topbar"><div><span class="board-label yellow">CONTACT SHEET / 03</span><h2>Chala guru, dekhal jaye.</h2><p>Different rooms. Different light. Same obsession with the frame.</p></div><button id="doorBtn" class="door-button" type="button">Close Doors ⇥</button></div>
+          <div id="workTabs" class="work-tabs"></div>
+          <div class="work-stage"><div id="doors" class="doors"><div class="doors-inner"><span>दरवाजा बंद बा</span><strong>अबहीं बाहर बानी</strong><p>खोलऽ, फिर आराम से देखऽ।</p><button id="openDoorsInline" type="button">Open Doors</button></div></div><div id="workCopy"></div><div id="workGallery" class="work-gallery"></div></div>
+        </div></div>
       </section>
 
-      <!-- ===================================================
-           CONTACT
-           =================================================== -->
-      <section class="slide page-section" id="contact" data-section="3" aria-labelledby="contact-title">
-        <div class="contact-wrap">
-
-          <div class="contact-card">
-            <div class="contact-grid"></div>
-
-            <span class="board-label">BOOKING / 04</span>
-            <span class="contact-kashi">काशी से, कैमरे के साथ.</span>
-
-            <h2 id="contact-title">
-              Let's Create<br>
-              Together.
-            </h2>
-
-            <p class="contact-name">Himanshu Singh</p>
-            <p class="contact-role">shutterbug.hai</p>
-
-            <div class="contact-actions">
-              <a href="mailto:contact@shutterbug.hai">Shoot An Inquiry</a>
-              <a href="https://instagram.com/shutterbug.hai"
-                 target="_blank"
-                 rel="noopener noreferrer">Follow @shutterbug.hai</a>
-            </div>
-          </div>
-
-        </div>
+      <section class="slide page-section contact" id="contact" data-section="3">
+        <div class="contact-wrap"><div class="contact-card"><span class="board-label">LET'S CREATE TOGETHER / 04</span><span class="contact-kashi">काशी से, कैमरे के साथ.</span><h2>Let's Create<br><i>Together.</i></h2><p>Himanshu Singh</p><strong>shutterbug.hai</strong><div class="contact-actions"><a href="mailto:contact@shutterbug.hai">Shoot An Inquiry</a><a href="https://instagram.com/shutterbug.hai" target="_blank" rel="noopener">Follow @shutterbug.hai</a></div></div></div>
       </section>
-
     </main>
 
-    <!-- BOTTOM NAV -->
-    <nav class="site-nav fixed left-1/2 -translate-x-1/2 z-50" aria-label="Portfolio sections">
-      <div id="dock" class="dock"></div>
-    </nav>
-
+    <nav class="site-nav" aria-label="Portfolio sections"><div id="dock" class="dock"></div></nav>
   </div>
-
   <script src="js/main.js" defer></script>
 </body>
 </html>
