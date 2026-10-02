@@ -1,56 +1,155 @@
-/* Mobile polish: keep the experience block clear of the red graphic */
+/* Mobile layout fix: keep the hero composition intentional on narrow screens */
 @media (max-width: 768px) {
-  .home-content {
-    padding: 0;
+  .home {
+    padding: 14px 8px 82px !important;
+    overflow: hidden;
   }
 
+  .home-art {
+    width: 100% !important;
+    height: calc(100svh - 96px) !important;
+    min-height: 620px !important;
+    overflow: hidden !important;
+  }
+
+  .home-content {
+    position: absolute !important;
+    inset: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    overflow: hidden;
+  }
+
+  /* Name gets its own controlled mobile area so it can never run off-screen. */
+  .home h1 {
+    position: absolute !important;
+    left: 7% !important;
+    top: 25% !important;
+    width: 86% !important;
+    margin: 0 !important;
+    font-size: clamp(56px, 16vw, 76px) !important;
+    line-height: .82 !important;
+    letter-spacing: -.075em !important;
+    white-space: normal !important;
+  }
+
+  .home h1 i {
+    display: block !important;
+    margin-left: 12% !important;
+  }
+
+  .aka {
+    position: absolute !important;
+    left: 7% !important;
+    top: 57% !important;
+    margin: 0 !important;
+    font-size: 12px !important;
+    white-space: nowrap;
+  }
+
+  /* 06+ is deliberately above the red strip and gets a small paper label. */
   .home .experience {
-    position: absolute;
-    left: 7%;
-    top: 64%;
-    margin: 0;
-    z-index: 30;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    position: absolute !important;
+    left: 7% !important;
+    top: 65% !important;
+    margin: 0 !important;
+    z-index: 30 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+    padding: 3px 7px 3px 0 !important;
+    background: rgba(238, 228, 210, .94) !important;
+    width: max-content !important;
+    max-width: 86% !important;
   }
 
   .home .experience b {
-    font-size: clamp(40px, 12vw, 54px);
-    line-height: 1;
+    font-size: clamp(42px, 12vw, 54px) !important;
+    line-height: 1 !important;
+    color: var(--red) !important;
   }
 
   .home .experience span {
-    font-size: 8px;
-    line-height: 1.45;
-    background: rgba(238, 228, 210, .92);
-    padding: 4px 6px;
-  }
-
-  /* Push the red strip lower so it never competes with 06+ */
-  .home .red-stroke {
-    bottom: 7%;
-    z-index: 2;
-  }
-
-  /* Keep the food doodles away from the name */
-  .home .jalebi-doodle {
-    right: 7%;
-    top: 15%;
-    z-index: 10;
-    color: var(--yellow);
-    text-shadow: 1px 1px 0 #7b5b00;
-  }
-
-  .home .kachori-doodle {
-    top: 17%;
+    font-size: 8px !important;
+    line-height: 1.35 !important;
+    letter-spacing: .08em !important;
+    background: transparent !important;
+    padding: 0 !important;
+    white-space: nowrap;
   }
 
   .home .enter-btn {
-    position: absolute;
-    left: 7%;
-    top: 75%;
-    margin: 0;
-    z-index: 30;
+    position: absolute !important;
+    left: 7% !important;
+    top: 76% !important;
+    margin: 0 !important;
+    z-index: 31 !important;
+  }
+
+  /* Red graphic stays behind the information, never through it. */
+  .home .red-stroke {
+    left: -18% !important;
+    bottom: 7% !important;
+    width: 72% !important;
+    height: 58px !important;
+    z-index: 2 !important;
+  }
+
+  /* Banarasi doodles live in their own visual zones. */
+  .home .kachori-doodle {
+    left: 7% !important;
+    top: 11% !important;
+    z-index: 10 !important;
+    font-size: 20px !important;
+  }
+
+  .home .jalebi-doodle {
+    right: 8% !important;
+    top: 13% !important;
+    z-index: 10 !important;
+    color: var(--yellow) !important;
+    text-shadow: 1px 1px 0 #7b5b00 !important;
+    font-size: 25px !important;
+  }
+
+  .home .paan-doodle {
+    right: 22% !important;
+    bottom: 24% !important;
+    font-size: 34px !important;
+  }
+
+  .home .chai-doodle {
+    right: 7% !important;
+    bottom: 29% !important;
+    font-size: 25px !important;
+  }
+
+  .home .home-sticker {
+    left: 6% !important;
+    bottom: 5% !important;
+    width: 78px !important;
+    height: 78px !important;
+    z-index: 32 !important;
+  }
+}
+
+/* Very narrow phones: tighten only the hero typography, never the layout. */
+@media (max-width: 390px) {
+  .home h1 {
+    font-size: 15.5vw !important;
+    top: 25.5% !important;
+  }
+
+  .home h1 i {
+    margin-left: 10% !important;
+  }
+
+  .home .experience {
+    top: 64% !important;
+  }
+
+  .home .enter-btn {
+    top: 75% !important;
   }
 }
