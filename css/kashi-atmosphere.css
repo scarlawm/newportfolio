@@ -1,0 +1,18 @@
+/* KASHI ATMOSPHERE EXPERIMENT
+   Additive only. Delete this file and its link in index.html to restore the previous visual exactly. */
+:root{--ka-red:#ef493f;--ka-blue:#67cde9;--ka-yellow:#f3d34a}
+body{position:relative}
+body:before{content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;background:radial-gradient(circle at 15% 78%,rgba(239,73,63,.09),transparent 24%),radial-gradient(circle at 84% 16%,rgba(103,205,233,.10),transparent 27%),linear-gradient(180deg,#0e0e0f,#111011 55%,#0b0b0c)}
+body:after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.13;background-image:radial-gradient(rgba(255,255,255,.3) .6px,transparent .6px);background-size:5px 5px;mix-blend-mode:screen}
+.home,.about,.work-section,.contact{isolation:isolate}
+.home:before,.about:before,.work-section:before,.contact:before{content:"";position:absolute;inset:-25%;z-index:-1;pointer-events:none;opacity:.25;filter:blur(1px);background:linear-gradient(112deg,transparent 28%,rgba(103,205,233,.12) 45%,transparent 59%);transform:translateX(-18%);animation:kaRiver 14s ease-in-out infinite alternate}
+@keyframes kaRiver{from{transform:translateX(-18%) rotate(-1.5deg)}to{transform:translateX(18%) rotate(1.5deg)}}
+.home-art:before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.75;background:radial-gradient(circle at 14% 19%,rgba(255,255,255,.18) 0 1px,transparent 2px),radial-gradient(circle at 76% 31%,rgba(255,255,255,.14) 0 1px,transparent 2px),radial-gradient(circle at 56% 78%,rgba(255,255,255,.13) 0 1px,transparent 2px);background-size:180px 160px,220px 190px,250px 210px;animation:kaGrain 20s linear infinite}
+@keyframes kaGrain{to{background-position:45px -25px,-35px 40px,30px -45px}}
+.about:after,.work-section:after{content:"KASHI  •  GANGA  •  GHATS  •  LIGHT  •  LIFE";position:absolute;left:0;right:0;bottom:18px;text-align:center;color:currentColor;opacity:.07;font:9px 'Courier New',monospace;letter-spacing:.34em;white-space:nowrap;pointer-events:none}
+.dock-btn,.enter-btn,.door-button,.doors-inner button,.work-tab,.contact-actions a{transition:transform .22s ease,box-shadow .22s ease,background-color .22s ease,color .22s ease}
+.dock-btn:hover,.work-tab:hover{transform:translateY(-2px)}
+.enter-btn:hover,.doors-inner button:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 #0e0e0f}
+.contact-actions a:hover{transform:translateY(-3px);box-shadow:5px 5px 0 #0e0e0f}
+@media(max-width:768px){body:after{opacity:.08}.home:before,.about:before,.work-section:before,.contact:before{opacity:.18;animation-duration:18s}.about:after,.work-section:after{font-size:7px;letter-spacing:.16em}.home-art:before{opacity:.55}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}}
