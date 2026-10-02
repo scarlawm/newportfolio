@@ -1,0 +1,39 @@
+/* Kashi visual layer: isolated from the original layout */
+.about{overflow:hidden}
+.about-board{position:relative;isolation:isolate}
+.about-board:before{content:'KASHI';position:absolute;right:-12px;top:24px;font:700 clamp(90px,14vw,180px)/1 var(--serif);color:var(--red);opacity:.06;pointer-events:none;transform:rotate(-8deg);z-index:-1}
+.about-layout{grid-template-columns:1.05fr .95fr;gap:18px}
+.about-story{min-height:390px;position:relative;overflow:hidden}
+.about-story:after{content:'GANGA';position:absolute;right:-15px;bottom:-38px;font:700 100px var(--serif);color:var(--blue);opacity:.12;transform:rotate(-8deg)}
+.kashi-card{min-height:390px;position:relative;overflow:hidden}
+.kashi-card:after{content:'ॐ';position:absolute;right:15px;bottom:-45px;font:180px var(--serif);color:var(--yellow);opacity:.08}
+.ganga-scene{grid-column:1/-1;height:255px;position:relative;overflow:hidden;background:linear-gradient(180deg,#e7d7c2 0 38%,#c9d9d7 38% 100%);border:1px solid #2223;box-shadow:8px 8px 0 #1111}
+.ganga-sky{position:absolute;inset:0;background:radial-gradient(circle at 76% 22%,#f3d34a 0 5%,transparent 5.5%),linear-gradient(180deg,transparent 0 55%,#fff4 55% 56%,transparent 56%)}
+.ghats{position:absolute;left:0;right:0;bottom:92px;height:105px;background:linear-gradient(135deg,transparent 0 3%,#b66b45 3% 18%,#8d533c 18% 31%,#c98650 31% 47%,#795040 47% 61%,#b66b45 61% 76%,#8d533c 76% 100%);clip-path:polygon(0 100%,0 42%,7% 42%,7% 26%,13% 26%,13% 53%,20% 53%,20% 15%,27% 15%,27% 38%,34% 38%,34% 5%,41% 5%,41% 48%,49% 48%,49% 22%,56% 22%,56% 42%,64% 42%,64% 8%,71% 8%,71% 48%,80% 48%,80% 20%,87% 20%,87% 43%,94% 43%,94% 12%,100% 12%,100% 100%);filter:saturate(.8)}
+.ghats:after{content:'▲  ▲   ▲    ▲   ▲    ▲';position:absolute;left:9%;top:-9px;color:#2d2926;font-size:25px;letter-spacing:28px;opacity:.75}
+.ganga-water{position:absolute;left:-5%;right:-5%;bottom:-8px;height:105px;background:repeating-linear-gradient(0deg,transparent 0 14px,#ffffff55 15px 16px,transparent 17px 27px),linear-gradient(180deg,#67cde9,#4baecb);transform:skewY(-1deg)}
+.ganga-water:before,.ganga-water:after{content:'';position:absolute;width:150px;height:22px;border-top:2px solid #fff8;border-radius:50%;animation:waterDrift 7s linear infinite}
+.ganga-water:before{left:8%;top:28px}.ganga-water:after{right:15%;top:62px;animation-delay:-3s}
+.boat{position:absolute;z-index:4;left:56%;bottom:62px;width:175px;height:48px;animation:boatFloat 4s ease-in-out infinite}
+.boat-hull{position:absolute;left:0;bottom:4px;width:175px;height:28px;background:#171616;clip-path:polygon(0 0,100% 0,86% 75%,14% 75%)}
+.boat-rim{position:absolute;left:10px;top:0;width:145px;height:7px;background:var(--yellow);border-radius:50%}
+.boat-person{position:absolute;left:74px;bottom:25px;width:11px;height:38px;background:#171616;border-radius:8px 8px 2px 2px;transform:rotate(-10deg)}
+.boat-oar{position:absolute;left:80px;bottom:14px;width:120px;height:4px;background:#171616;transform:rotate(29deg);transform-origin:left center}
+.scene-label{position:absolute;z-index:6;left:18px;top:18px;padding:8px 10px;background:var(--black);color:var(--cream);font:9px var(--mono);letter-spacing:.12em;box-shadow:4px 4px 0 var(--red)}
+.scene-caption{position:absolute;z-index:6;right:18px;bottom:16px;padding:7px 9px;background:var(--yellow);color:var(--black);font:9px var(--mono);transform:rotate(-2deg)}
+@keyframes boatFloat{0%,100%{transform:translate3d(0,0,0) rotate(-1deg)}50%{transform:translate3d(12px,-5px,0) rotate(1deg)}}
+@keyframes waterDrift{from{transform:translateX(-20px)}to{transform:translateX(90px)}}
+.pexels-section{background:var(--black);color:var(--cream);display:grid;place-items:center;padding:90px 22px 80px;position:relative;overflow:hidden}
+.pexels-section:before{content:'9M+';position:absolute;right:-4vw;top:5vh;font:700 clamp(160px,28vw,420px)/1 var(--serif);color:var(--yellow);opacity:.07;pointer-events:none}
+.pexels-board{width:min(1100px,100%);display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:stretch}
+.pexels-copy{padding:clamp(30px,5vw,70px);border:1px solid #fff2;background:#171717;position:relative;overflow:hidden}
+.pexels-copy:after{content:'PEXELS / PUBLIC REACH';position:absolute;right:-35px;bottom:24px;font:10px var(--mono);letter-spacing:.12em;color:var(--blue);transform:rotate(-90deg)}
+.pexels-copy h2{margin:15px 0;font:400 clamp(58px,9vw,115px)/.78 var(--serif);letter-spacing:-.06em}
+.pexels-copy h2 i{color:var(--yellow)}
+.pexels-copy p{max-width:460px;color:#aaa;line-height:1.6}
+.pexels-stat{background:var(--yellow);color:var(--black);padding:clamp(28px,4vw,50px);display:flex;flex-direction:column;justify-content:space-between;min-height:360px;transform:rotate(1deg);box-shadow:10px 10px 0 var(--red)}
+.pexels-stat strong{font:700 clamp(75px,11vw,145px)/.75 var(--serif)}
+.pexels-stat span{font:10px var(--mono);letter-spacing:.12em}
+.pexels-stat a{width:max-content;color:var(--black);text-decoration:none;border-bottom:1px solid var(--black);font:11px var(--mono);padding-bottom:4px}
+@media(max-width:768px){.about{padding:72px 12px 90px}.about-board{padding:18px}.about-layout{grid-template-columns:1fr}.about-story,.kashi-card{min-height:0}.about-story{padding:22px}.about-story h3{font-size:29px}.ganga-scene{height:230px}.boat{left:43%;transform:scale(.8);transform-origin:bottom left}.scene-caption{right:10px;bottom:10px}.pexels-section{padding:72px 12px 90px}.pexels-board{grid-template-columns:1fr;gap:14px}.pexels-copy{padding:28px}.pexels-copy h2{font-size:72px}.pexels-stat{min-height:270px}.about-board:before{font-size:90px}}
+@media(prefers-reduced-motion:reduce){.boat,.ganga-water:before,.ganga-water:after{animation:none}}
