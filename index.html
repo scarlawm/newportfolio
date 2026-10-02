@@ -6,7 +6,14 @@
   <meta name="theme-color" content="#101010">
   <meta name="description" content="Himanshu Singh aka shutterbug.hai, photographer from Varanasi with 6+ years of experience.">
   <title>Himanshu Singh | shutterbug.hai</title>
-  <link rel="stylesheet" href="css/style.css">
+  <script>
+    // Always enter the portfolio at the Home screen.
+    // Prevent the browser from restoring an old scroll position.
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    if (location.hash) history.replaceState(null, document.title, location.pathname + location.search);
+    window.scrollTo(0, 0);
+  </script>
+  <link rel="stylesheet" href="css/style.css?v=20261002-2">
 </head>
 <body>
   <div id="app">
@@ -20,6 +27,6 @@
     </main>
     <nav class="site-nav" aria-label="Portfolio sections"><div id="dock" class="dock"></div></nav>
   </div>
-  <script src="js/main.js" defer></script>
+  <script src="js/main.js?v=20261002-2" defer></script>
 </body>
 </html>
