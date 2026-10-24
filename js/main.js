@@ -7,7 +7,8 @@
     {label:'Street',title:'Kashi has no pause button.',description:'Gali, ghat, chehre aur roshni. Bas aankh taiyaar honi chahiye.',tags:['Kashi','Lanes','Light','Life']},
     {label:'Editorial',title:'Thoda style, poora frame.',description:'Fashion, concepts aur clean compositions jahan mood sabse pehle dikhe.',tags:['Fashion','Concept','Form','Light']},
     {label:'E-commerce Shoot',title:'Every product has a frame.',description:'Clean product photography, accurate details and considered compositions built for catalogues and online stores.',tags:['Product','Catalogue','Details','Brand']},
-    {label:'Product Photography',title:'Products, framed with intention.',description:'Studio product images that bring out texture, details and the character of every product.',tags:['Product','Studio','Details','Lighting']}
+    {label:'Product Photography',title:'Products, framed with intention.',description:'Studio product images that bring out texture, details and the character of every product.',tags:['Product','Studio','Details','Lighting']},
+    {label:'Modern Muse',title:'A mood, not just a pose.',description:'Contemporary portraits, expressive styling and fashion led frames that bring personality into focus.',tags:['Portraits','Fashion','Expression','Mood']}
   ];
   let work=0,closed=true,fast=false;
   const sections=()=>$$('[data-section]');
