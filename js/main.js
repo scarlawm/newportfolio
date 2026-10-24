@@ -39,14 +39,35 @@
   function observe(){const io=new IntersectionObserver(es=>{const e=es.filter(x=>x.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(!e)return;const i=+e.target.dataset.section;number(i);$$('.dock-btn').forEach((b,n)=>b.classList.toggle('active',n===i));},{threshold:.55});sections().forEach(s=>io.observe(s));}
   function navScrollBehavior(){
     const nav=$('.site-nav'); if(!nav)return;
-    let lastY=window.scrollY||0, ticking=false;
+    let lastY=window.scrollY||document.documentElement.scrollTop||0;
+    let accumulated=0, ticking=false;
+    const threshold=7, topReveal=70;
     window.addEventListener('scroll',()=>{
-      if(ticking)return; ticking=true;
+      if(ticking)return;
+      ticking=true;
       requestAnimationFrame(()=>{
-        const y=window.scrollY||0, delta=y-lastY;
-        if(y<80||delta < -4) nav.classList.remove('nav-hidden');
-        else if(delta > 4) nav.classList.add('nav-hidden');
-        lastY=y; ticking=false;
+        const y=window.scrollY||document.documentElement.scrollTop||0;
+        const delta=y-lastY;
+        if(y<=topReveal){
+          nav.classList.remove('nav-hidden');
+          accumulated=0;
+        }else if(Math.sign(delta)===Math.sign(accumulated)||accumulated===0){
+          accumulated+=delta;
+          if(accumulated>=threshold){
+            nav.classList.add('nav-hidden');
+            accumulated=0;
+          }else if(accumulated<=-threshold){
+            nav.classList.remove('nav-hidden');
+            accumulated=0;
+          }
+        }else{
+          accumulated=delta;
+          if(accumulated<=-threshold)nav.classList.remove('nav-hidden');
+          else if(accumulated>=threshold)nav.classList.add('nav-hidden');
+          accumulated=0;
+        }
+        lastY=y;
+        ticking=false;
       });
     },{passive:true});
   }
