@@ -1,23 +1,129 @@
-/* Mobile-only composition fixes. Desktop keeps the main portfolio layout. */
+/* Mobile-only fixes for the current hero composition. Desktop styles are untouched. */
 @media (max-width: 768px) {
-  .home { padding: 14px 8px 82px !important; overflow: hidden; }
-  .home-art { width: 100% !important; height: calc(100svh - 96px) !important; min-height: 620px !important; overflow: hidden !important; }
-  .home-content { position: absolute !important; inset: 0 !important; padding: 0 !important; display: block !important; width: 100% !important; overflow: hidden; }
-  .home h1 { position: absolute !important; left: 7% !important; top: 25% !important; width: 86% !important; margin: 0 !important; font-size: clamp(56px, 16vw, 76px) !important; line-height: .82 !important; letter-spacing: -.075em !important; white-space: normal !important; }
-  .home h1 i { display: block !important; margin-left: 12% !important; }
-  .aka { position: absolute !important; left: 7% !important; top: 57% !important; margin: 0 !important; font-size: 12px !important; white-space: nowrap; }
-  .home .experience { display: none !important; }
-  .home .enter-btn { position: absolute !important; left: 7% !important; top: 76% !important; margin: 0 !important; z-index: 31 !important; }
-  .home .red-stroke { left: -18% !important; bottom: 7% !important; width: 72% !important; height: 58px !important; z-index: 2 !important; }
-  .home .kachori-doodle { left: 7% !important; top: 11% !important; z-index: 10 !important; font-size: 20px !important; }
-  .home .jalebi-doodle { right: 8% !important; top: 13% !important; z-index: 10 !important; color: var(--yellow) !important; text-shadow: 1px 1px 0 #7b5b00 !important; font-size: 25px !important; }
-  .home .paan-doodle { right: 22% !important; bottom: 24% !important; font-size: 34px !important; }
-  .home .chai-doodle { right: 7% !important; bottom: 29% !important; font-size: 25px !important; }
-  .home .home-sticker { left: 6% !important; bottom: 5% !important; width: 78px !important; height: 78px !important; z-index: 32 !important; }
-}
+  /* Keep the brand and navigation on separate rows on small screens. */
+  .site-nav {
+    top: 48px !important;
+    bottom: auto !important;
+    padding: 4px 8px !important;
+  }
+  .dock {
+    max-width: calc(100vw - 16px);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .dock::-webkit-scrollbar { display: none; }
+  .dock-btn { flex: 0 0 auto; }
 
-@media (max-width: 390px) {
-  .home h1 { font-size: 15.5vw !important; top: 25.5% !important; }
-  .home h1 i { margin-left: 10% !important; }
-  .home .enter-btn { top: 75% !important; }
+  /* Stack the hero content instead of letting the headline float over it. */
+  #home.home {
+    min-height: 100svh;
+    padding: 5.8rem .7rem 4.5rem !important;
+    overflow: hidden;
+  }
+  #home .home-stage {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.1rem;
+    padding: 3.4rem .9rem 4rem;
+    overflow: hidden;
+  }
+  #home .hero-index {
+    top: 1rem;
+    left: .9rem;
+    right: .9rem;
+    gap: .5rem;
+    font-size: 7px;
+  }
+  #home .hero-copy {
+    min-width: 0;
+    padding: .5rem 0 0;
+  }
+  #home .hero-kicker {
+    font-size: 8px;
+    margin-bottom: 1rem;
+  }
+  #home .hero-copy h1 {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    max-width: 100%;
+    margin: 0 !important;
+    font-size: clamp(2.65rem, 12.5vw, 4.1rem) !important;
+    line-height: .82 !important;
+    letter-spacing: -.095em !important;
+    white-space: normal !important;
+  }
+  #home .hero-copy h1 em {
+    display: inline-block !important;
+    padding-left: .38em;
+  }
+  #home .hero-bottomline {
+    margin-top: 1.2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  #home .hero-bottomline > p {
+    max-width: 100%;
+    font-size: .92rem;
+    line-height: 1.45;
+  }
+  #home .hero-actions {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .8rem;
+  }
+  #home .hero-cta {
+    min-width: 150px;
+    gap: 1rem;
+    padding: .8rem;
+    font-size: 8px;
+  }
+  #home .hero-about {
+    max-width: 100%;
+    font-size: 7px;
+    text-align: left;
+  }
+  #home .hero-visual {
+    width: 90%;
+    max-width: 430px;
+    justify-self: center;
+    margin: 0 auto;
+    padding: .3rem .6rem 1.5rem .8rem;
+  }
+  #home .hero-photo-wrap {
+    aspect-ratio: 1.05;
+    padding: 7px 7px 48px;
+    box-shadow: 6px 6px 0 var(--hero-orange);
+  }
+  #home .hero-photo-wrap:hover {
+    transform: rotate(2.5deg);
+    box-shadow: 6px 6px 0 var(--hero-orange);
+  }
+  #home .photo-corner-a { top: 12px; left: 12px; }
+  #home .photo-corner-b { bottom: 54px; right: 12px; }
+  #home .photo-label { bottom: 9px; left: 10px; right: 10px; gap: 3px; }
+  #home .photo-label span { font-size: 6px; }
+  #home .photo-label strong { font-size: 7px; }
+  #home .hero-side-note { right: -.15rem; top: 12%; font-size: 6px; }
+  #home .hero-sticker {
+    width: 65px;
+    height: 65px;
+    left: -.25rem;
+    bottom: 8%;
+    box-shadow: 3px 3px 0 var(--hero-ink);
+  }
+  #home .hero-sticker strong { font-size: 12px; }
+  #home .hero-sticker span { font-size: 6px; }
+  #home .hero-number { right: .2rem; font-size: 10px; }
+  #home .hero-bottom-tape {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    font-size: 6px;
+    gap: .4rem;
+  }
+  #home .hero-bottom-tape span:nth-child(2) { display: none; }
 }
