@@ -37,10 +37,23 @@
   function openDoors(){setDoors(false);setTimeout(()=>scrollWork(0),150)}
   function shutter(){fast=!fast;const v=fast?'1/500s':'1/15s';if($('#shutterTxt'))$('#shutterTxt').textContent=v;if($('#hudShutter'))$('#hudShutter').textContent=v;}
   function observe(){const io=new IntersectionObserver(es=>{const e=es.filter(x=>x.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(!e)return;const i=+e.target.dataset.section;number(i);$$('.dock-btn').forEach((b,n)=>b.classList.toggle('active',n===i));},{threshold:.55});sections().forEach(s=>io.observe(s));}
+  function navScrollBehavior(){
+    const nav=$('.site-nav'); if(!nav)return;
+    let lastY=window.scrollY||0, ticking=false;
+    window.addEventListener('scroll',()=>{
+      if(ticking)return; ticking=true;
+      requestAnimationFrame(()=>{
+        const y=window.scrollY||0, delta=y-lastY;
+        if(y<80||delta < -4) nav.classList.remove('nav-hidden');
+        else if(delta > 4) nav.classList.add('nav-hidden');
+        lastY=y; ticking=false;
+      });
+    },{passive:true});
+  }
   function desktopWorkWheel(e){if(closed)return;const r=$('#workGallery')?.getBoundingClientRect();if(!r||e.clientY<r.top||e.clientY>r.bottom)return;const delta=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;if(Math.abs(delta)<10)return;e.preventDefault();scrollWork(work+(delta>0?1:-1));}
   function init(){
     forceHome();
-    dock();renderWork();
+    dock();renderWork();navScrollBehavior();
     $('#pexelsLink')?.setAttribute('href',PEXELS);
     $('#doorBtn')?.addEventListener('click',()=>setDoors(!closed));
     $('#openDoorsInline')?.addEventListener('click',openDoors);
