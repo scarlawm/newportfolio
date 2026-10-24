@@ -287,3 +287,15 @@ button, a { -webkit-tap-highlight-color:transparent; }
   #work .event-photo:nth-child(4){grid-column:3;grid-row:2}
   #work .event-photo{border-radius:2px 9px 2px 2px}
 }
+
+
+/* Street door — photo-only Bento gallery */
+#work .street-work-slide{display:flex!important;align-items:center;justify-content:center;min-width:100%;height:100%;min-height:0;padding:clamp(10px,1.5vw,20px);overflow:hidden}
+#work .street-photo-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:minmax(0,1fr);gap:clamp(8px,1vw,14px);width:100%;height:100%;min-width:0;min-height:0}
+#work .street-photo{position:relative;min-width:0;min-height:0;height:100%;margin:0;overflow:hidden;border:1px solid #756c9b55;border-radius:3px 14px 3px 3px;background:#17152c}
+#work .street-photo img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+@media(max-width:640px){
+ #work .street-work-slide{padding:8px}
+ #work .street-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:7px}
+ #work .street-photo{border-radius:2px 9px 2px 2px}
+}
