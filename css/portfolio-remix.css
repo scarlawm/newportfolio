@@ -216,3 +216,9 @@ button, a { -webkit-tap-highlight-color:transparent; }
 .site-nav{z-index:1001;transition:transform .85s cubic-bezier(.22,.75,.25,1),opacity .75s ease,visibility .75s}
 .site-nav.nav-hidden{transform:translateY(-115%);opacity:0;visibility:hidden;pointer-events:none}
 @media(prefers-reduced-motion:reduce){.site-header.scroll-header,.site-nav{transition:none}}
+
+/* Above-the-fold hero background: Kashi Ganga illustration */
+#home.home{position:relative;isolation:isolate;background:var(--ink);overflow:hidden}
+#home.home:before{content:"";position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(23,21,44,.68) 0%,rgba(23,21,44,.35) 48%,rgba(23,21,44,.18) 100%),url("/assets/kashi-ganga-illustration.webp");background-size:cover;background-position:center 48%;background-repeat:no-repeat;z-index:-1;pointer-events:none}
+#home .home-stage{position:relative;isolation:isolate;background:rgba(242,240,255,.90);backdrop-filter:blur(1.5px)}
+@media(max-width:768px){#home.home:before{background-position:center;background-image:linear-gradient(180deg,rgba(23,21,44,.48),rgba(23,21,44,.30)),url("/assets/kashi-ganga-illustration.webp")}#home .home-stage{background:rgba(242,240,255,.92)}}
