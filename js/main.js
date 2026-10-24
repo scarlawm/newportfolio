@@ -29,12 +29,12 @@
   function number(i=0){const n=$('#secNo');if(n)n.textContent=`${String(i+1).padStart(2,'0')} / ${String(sections().length).padStart(2,'0')}`;}
   function go(i){const list=sections();const target=list[Math.max(0,Math.min(list.length-1,i))];if(target)target.scrollIntoView({behavior:'smooth',block:'start'});}
   function frameMarkup(item,i){return `<article class="frame"><div class="frame-content"><span class="frame-code">${String(i+1).padStart(2,'0')} / ${item.label.toUpperCase()}</span><h4>${['Light finds its way.','Beech ke pal.','Kahani ek frame mein.','Feeling ko rehne do.'][i]}</h4><p>YOUR PHOTOGRAPH HERE</p></div></article>`}
-  const eventImages=["/Do1/IMG-20260131-WA0051(1).jpg","/Do1/IMG-20260131-WA0055(1).jpg","/Do1/MyImage-1755078929-02.jpg","/Do1/MyImage-1755078929-07.jpg"];
+  const eventImages=[{src:"/Do1/IMG-20260131-WA0051(1).jpg",width:2773,height:4160,alt:"BMIC 2025 stage and trophy under spotlights",layout:"event-photo--tall"},{src:"/Do1/IMG-20260131-WA0055(1).jpg",width:4160,height:2773,alt:"Wide view of the BMIC 2025 event venue",layout:"event-photo--landscape"},{src:"/Do1/MyImage-1755078929-02.jpg",width:1080,height:1350,alt:"Event participants on stage",layout:"event-photo--portrait"},{src:"/Do1/MyImage-1755078929-07.jpg",width:1080,height:1350,alt:"Backstage and stagecraft moments",layout:"event-photo--portrait"}];
   function renderWork(){
     const gallery=$('#workGallery'); if(!gallery)return;
     gallery.innerHTML=items.map((item,i)=>{
       if(i===0){
-        return `<article class="work-slide event-work-slide" data-work-slide="${i}"><div class="event-photo-grid">${eventImages.map((src,n)=>`<figure class="event-photo"><img src="${src}" alt="Event photography ${n+1}" loading="lazy" decoding="async"></figure>`).join('')}</div></article>`;
+        return `<article class="work-slide event-work-slide" data-work-slide="${i}"><div class="event-photo-grid">${eventImages.map(image=>`<figure class="event-photo ${image.layout}"><img src="${image.src}" alt="${image.alt}" width="${image.width}" height="${image.height}" loading="lazy" decoding="async"></figure>`).join('')}</div></article>`;
       }
       return `<article class="work-slide" data-work-slide="${i}"><div class="work-copy"><span class="kicker">${item.label.toUpperCase()}</span><h3>${item.title}</h3><p>${item.description}</p><div class="work-tags">${item.tags.map(t=>`<span>${t}</span>`).join('')}</div><small class="work-hint">SWIPE / SCROLL →</small></div><div class="slide-gallery">${[0,1,2,3].map(n=>frameMarkup(item,n)).join('')}</div></article>`;
     }).join('');
