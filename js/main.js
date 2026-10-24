@@ -6,7 +6,7 @@
     {label:'Events',title:'Moments before they disappear.',description:'Logon ki energy, roshni aur woh pal jo dobara bilkul waise nahi aate.',tags:['Energy','Crowds','Emotion','Live']},
     {label:'Street',title:'Kashi has no pause button.',description:'Gali, ghat, chehre aur roshni. Bas aankh taiyaar honi chahiye.',tags:['Kashi','Lanes','Light','Life']},
     {label:'Editorial',title:'Thoda style, poora frame.',description:'Fashion, concepts aur clean compositions jahan mood sabse pehle dikhe.',tags:['Fashion','Concept','Form','Light']},
-    {label:'Portrait / Muse',title:'Chehra bole, camera sune.',description:'Portraits jo pose se zyada insaan ko yaad rakhte hain.',tags:['Character','Expression','People','Muse']},
+    {label:'E-commerce Shoot',title:'Every product has a frame.',description:'Clean product photography, accurate details and considered compositions built for catalogues and online stores.',tags:['Product','Catalogue','Details','Brand']},
     {label:'Culture',title:'Rang, riwaaz aur raunak.',description:'Holi, festivals aur culture ke woh frames jahan camera bhi thoda nachta hai.',tags:['Colour','Culture','Movement','Joy']}
   ];
   let work=0,closed=true,fast=false;
