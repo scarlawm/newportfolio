@@ -202,3 +202,10 @@ button, a { -webkit-tap-highlight-color:transparent; }
 @media (prefers-reduced-motion:reduce) {
   *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; transition-duration:.01ms !important; }
 }
+
+/* Top navigation: visible on upward scroll, tucked away on downward scroll */
+.site-nav{top:0;bottom:auto;left:0;right:0;transform:none;width:100%;max-width:none;padding:12px 22px;transition:transform .28s ease,opacity .28s ease;will-change:transform}
+.site-nav.nav-hidden{transform:translateY(-110%);opacity:0;pointer-events:none}
+.dock{width:max-content;max-width:100%;margin:0 auto;border-radius:999px;box-shadow:0 8px 24px #0002}
+@media(max-width:768px){.site-nav{top:0;bottom:auto;padding:8px 8px}.dock{max-width:100%;overflow-x:auto;scrollbar-width:none}.dock::-webkit-scrollbar{display:none}}
+@media(prefers-reduced-motion:reduce){.site-nav{transition:none}}
